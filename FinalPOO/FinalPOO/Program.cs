@@ -6,12 +6,7 @@ namespace FinalPOO
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Prueba GITHUB");
-            Console.WriteLine("Prueba 2 aaaaaaaa");
+            
         }
-
-
-
     }
 }
