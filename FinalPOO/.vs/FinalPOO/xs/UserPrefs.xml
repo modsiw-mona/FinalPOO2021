@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{1BCDBE60-1D97-44B2-96F8-09F1997597C7}|Default">
+  <MonoDevelop.Ide.ItemProperties.FinalPOO PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FinalPOO/Program.cs">
+    <Files>
+      <File FileName="FinalPOO/Clases/Juego.cs" Line="86" Column="6" IsPinned="True" />
+      <File FileName="FinalPOO/Clases/cJuego.cs" Line="7" Column="14" />
+      <File FileName="FinalPOO/Clases/Bonus.cs" Line="11" Column="32" />
+      <File FileName="FinalPOO/Clases/Carta.cs" Line="6" Column="2" />
+      <File FileName="FinalPOO/Clases/Estandar.cs" Line="25" Column="13" />
+      <File FileName="FinalPOO/Clases/Indicadora.cs" Line="19" Column="35" />
+      <File FileName="FinalPOO/Clases/Resto.cs" Line="16" Column="47" />
+      <File FileName="FinalPOO/Clases/Premio.cs" Line="10" Column="13" />
+      <File FileName="FinalPOO/Clases/Jugador.cs" Line="68" Column="16" />
+      <File FileName="FinalPOO/Clases/Castigo.cs" Line="15" Column="1" />
+      <File FileName="FinalPOO/Program.cs" Line="15" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FinalPOO" expanded="True">
+            <Node name="FinalPOO" expanded="True">
+              <Node name="Clases" expanded="True" />
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

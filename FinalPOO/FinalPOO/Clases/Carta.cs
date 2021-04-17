@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FinalPOO.Clases
 {
-    class Carta
+    abstract class Carta
     {
         #region Atributos
         private string id_carta;

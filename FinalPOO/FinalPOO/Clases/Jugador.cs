@@ -6,5 +6,70 @@ namespace FinalPOO.Clases
 {
     class Jugador
     {
+        private string nickname;
+        private List<cJuego> baraja;
+        private byte apuesta_inicial;
+        private byte puntos;
+
+        public Jugador(string nickname, byte apuesta_inicial, byte puntos)
+        {
+            Nickname = nickname;
+            baraja = new List<cJuego>();
+            Apuesta_inicial = apuesta_inicial;
+            Puntos = puntos;
+        }
+
+        public string Nickname
+        {
+            get => nickname;
+
+            set
+            {
+                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || value.Length < 3)
+                    throw new Exception("El nickname no puede estar vacio, ser nulo, ni menor a tres");
+                else
+                    nickname = value;
+            }
+
+        }
+
+        public byte Apuesta_inicial
+        {
+            get => apuesta_inicial;
+
+            set
+            {
+                if (value <= 0)
+                    throw new Exception("La apuesta inicial debe ser mayor a cero");
+                else
+                    apuesta_inicial = value;
+            }
+        }
+
+        public byte Puntos
+        {
+            get => puntos;
+
+            set
+            {
+                if (value < 0)
+                    throw new Exception("Los puntos no pueden ser menor a cero");
+                else
+                    puntos = value;
+            }
+        }
+
+        public List<cJuego> Baraja
+        {
+            get => baraja;
+
+            set
+            {
+                if (value.Count < 0)
+                    throw new Exception("El resto no puede ser menor a cero");
+                else
+                    baraja = value;
+            }
+        }
     }
 }

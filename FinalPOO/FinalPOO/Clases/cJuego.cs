@@ -4,10 +4,11 @@ using System.Text;
 
 namespace FinalPOO.Clases
 {
-    class cJuego : Carta
+    abstract class cJuego : Carta
     {
         public cJuego(string id_carta) : base(id_carta)
         {
+
         }
     }
 }

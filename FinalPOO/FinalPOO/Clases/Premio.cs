@@ -4,7 +4,11 @@ using System.Text;
 
 namespace FinalPOO.Clases
 {
-    class Premio
+    class Premio : Bonus
     {
+        public Premio(string id_carta, string descripcion)
+            : base(id_carta, descripcion)
+        {
+        }
     }
 }
