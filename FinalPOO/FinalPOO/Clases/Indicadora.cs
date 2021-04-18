@@ -6,18 +6,21 @@ namespace FinalPOO.Clases
 {
     class Indicadora : cJuego
     {
+        #region Atributos
         private char color_o_numero;
+        #endregion
 
-        public Indicadora(string id_carta, char color_o_numero)
-            : base(id_carta)
+        #region Constructor
+        public Indicadora(string id_carta, char color_o_numero) : base(id_carta)
         {
             Color_o_numero = color_o_numero;
         }
+        #endregion
 
+        #region Accesores
         public char Color_o_numero
         {
             get => color_o_numero;
-
             set
             {
                 if (char.IsWhiteSpace(value))
@@ -26,5 +29,6 @@ namespace FinalPOO.Clases
                     color_o_numero = value;
             }
         }
+        #endregion
     }
 }

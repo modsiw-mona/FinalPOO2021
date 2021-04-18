@@ -6,19 +6,21 @@ namespace FinalPOO.Clases
 {
     abstract class Bonus : Carta
     {
+        #region Atributos
         private string descripcion;
+        #endregion
 
-        public Bonus(string id_carta, string descripcion)
-            : base(id_carta)
-
+        #region Constructor
+        public Bonus(string id_carta, string descripcion) : base(id_carta)
         {
             Descripcion = descripcion;
         }
+        #endregion
 
+        #region Accesores
         public string Descripcion
         {
             get => descripcion;
-
             set
             {
                 if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || value.Length < 10)
@@ -27,5 +29,6 @@ namespace FinalPOO.Clases
                     descripcion = value;
             }
         }
+        #endregion
     }
 }

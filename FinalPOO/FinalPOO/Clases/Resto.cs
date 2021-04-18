@@ -20,5 +20,12 @@ namespace FinalPOO.Clases
         #region Accesores
         public List<cJuego> L_cartas_sobrantes { get => l_cartas_sobrantes; }
         #endregion
+
+        #region Metodos 
+        public cJuego Entregar_carta()
+        {
+
+        }
+        #endregion
     }
 }

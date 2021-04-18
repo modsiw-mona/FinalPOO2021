@@ -6,9 +6,9 @@ namespace FinalPOO.Clases
 {
     class Castigo : Bonus
     {
-        public Castigo(string id_carta, string descripcion)
-            : base(id_carta, descripcion)
+        public Castigo(string id_carta, string descripcion) : base(id_carta, descripcion)
         {
+
         }
     }
 }

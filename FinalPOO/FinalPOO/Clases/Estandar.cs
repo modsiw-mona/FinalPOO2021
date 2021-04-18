@@ -6,18 +6,20 @@ namespace FinalPOO.Clases
 {
     class Estandar : cJuego
     {
+        #region Atributos
         private char color;
         private char numero;
+        #endregion
 
-        public Estandar(string id_carta, char color, char numero)
-
-            : base(id_carta)
-
+        #region Constructor
+        public Estandar(string id_carta, char color, char numero) : base(id_carta)
         {
             Color = color;
             Numero = numero;
         }
+        #endregion
 
+        #region Accesores
         public char Color
         {
             get => color;
@@ -29,7 +31,6 @@ namespace FinalPOO.Clases
                     color = value;
             }
         }
-
         public char Numero
         {
             get => numero;
@@ -41,5 +42,6 @@ namespace FinalPOO.Clases
                     numero = value;
             }
         }
+        #endregion
     }
 }
