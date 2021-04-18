@@ -59,6 +59,11 @@ namespace FinalPOO
             {
                 Console.WriteLine(c.Id_carta);
             }
+            Console.WriteLine("Cartas Resto: ");
+            foreach (cJuego c in juego1.Resto.L_cartas_sobrantes)
+            {
+                Console.WriteLine(c.Id_carta);
+            }
         }   
     }
 }

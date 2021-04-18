@@ -32,7 +32,7 @@ namespace FinalPOO.Clases
             l_cartas_jugadas = new List<cJuego>();
             Repartir_cartas();
 
-            resto = new Resto();
+            resto = Crear_resto();
         }
         #endregion
 
@@ -48,19 +48,18 @@ namespace FinalPOO.Clases
                     l_jugadores = value;
             }
         }
-
         public List<Carta> L_cartas { get => l_cartas; set => l_cartas = value; }
         public Resto Resto {get => resto;}
-        public List<cJuego> L_cjuego { get => l_cjuego; set => l_cjuego = value; }  
-        public List<Bonus> L_bonus { get => l_bonus; set => l_bonus = value; }
-        public List<cJuego> L_cartas_jugadas { get => l_cartas_jugadas; set => l_cartas_jugadas = value; }
+        public List<cJuego> L_cjuego { get => l_cjuego; /*set => l_cjuego = value; */}  
+        public List<Bonus> L_bonus { get => l_bonus; /*set => l_bonus = value;*/ }
+        public List<cJuego> L_cartas_jugadas { get => l_cartas_jugadas; /*set => l_cartas_jugadas = value; */}
         public byte Cartas_repartir 
         { 
             get => cartas_repartir; 
             set
             {
-                if (value < 2)
-                    throw new Exception("No se pueden repartir menos de dos cartas");
+                if (value < 2 && value > 10)
+                    throw new Exception("No se pueden repartir menos de dos cartas o más de 10 cartas");
                 else
                     cartas_repartir = value;
             }
@@ -141,28 +140,22 @@ namespace FinalPOO.Clases
                 throw new Exception("Ocurrió un error en el metodo Repartir_cartas de la clase Juego " + e);
             }
         }
-   
         private Resto Crear_resto()
         {
             try
             {
-                if (l_cartas.Count > 0)
+                if (l_cjuego.Count > 0)
                 {
                     Resto resto = new Resto();
-                    for (int i = 0; i < l_cartas.Count; i++)
+                    for (int i = 0; i < l_cjuego.Count; i++)
                     {
-                        if (l_cartas[i] is cJuego)
-                        {                     
-                            resto.L_cartas_sobrantes.Add(l_cartas[i] as cJuego);
-                            l_cartas.RemoveAt(i);
-                        }
+                        resto.L_cartas_sobrantes.Add(l_cjuego.ElementAt(i));                        
                     }
+                    l_cjuego.RemoveRange(0, l_cjuego.Count);
                     return resto;
                 }
                 else 
                 {
-                    //Resto resto2 = new Resto();
-                    //return resto2;  
                     throw new Exception("\nLa lista de cartas principal se encuentra vacía actualmente");
                 }
             }
