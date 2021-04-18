@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using FinalPOO.Interfaces;
 
 namespace FinalPOO.Clases
 {
-    class Resto
+    class Resto : IEntregarCarta
     {
         #region Atributos 
         private List<cJuego> l_cartas_sobrantes;
@@ -24,7 +25,7 @@ namespace FinalPOO.Clases
         #region Metodos 
         public cJuego Entregar_carta()
         {
-
+            throw new NotImplementedException();
         }
         #endregion
     }

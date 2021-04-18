@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using FinalPOO.Interfaces;
 
 namespace FinalPOO.Clases
 {
-    class Jugador
+    class Jugador : IEntregarCarta
     {
         #region Atributos
         private string nickname;
@@ -71,13 +72,15 @@ namespace FinalPOO.Clases
         #endregion
 
         #region Metodos
-        public cJuego Tirar_carta()
-        {
-
-        }
+        /*      
         public cJuego Recoger_carta(Resto resto)
         {
 
+        }*/
+
+        public cJuego Entregar_carta()
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }
