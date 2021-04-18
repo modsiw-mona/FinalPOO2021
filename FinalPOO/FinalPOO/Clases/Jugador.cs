@@ -6,11 +6,14 @@ namespace FinalPOO.Clases
 {
     class Jugador
     {
+        #region Atributos
         private string nickname;
         private List<cJuego> baraja;
         private byte apuesta_inicial;
         private byte puntos;
+        #endregion
 
+        #region Constructor
         public Jugador(string nickname, byte apuesta_inicial, byte puntos)
         {
             Nickname = nickname;
@@ -18,11 +21,12 @@ namespace FinalPOO.Clases
             Apuesta_inicial = apuesta_inicial;
             Puntos = puntos;
         }
+        #endregion
 
+        #region Accesores
         public string Nickname
         {
             get => nickname;
-
             set
             {
                 if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || value.Length < 3)
@@ -30,13 +34,10 @@ namespace FinalPOO.Clases
                 else
                     nickname = value;
             }
-
         }
-
         public byte Apuesta_inicial
         {
             get => apuesta_inicial;
-
             set
             {
                 if (value <= 0)
@@ -45,11 +46,9 @@ namespace FinalPOO.Clases
                     apuesta_inicial = value;
             }
         }
-
         public byte Puntos
         {
             get => puntos;
-
             set
             {
                 if (value < 0)
@@ -58,11 +57,9 @@ namespace FinalPOO.Clases
                     puntos = value;
             }
         }
-
         public List<cJuego> Baraja
         {
             get => baraja;
-
             set
             {
                 if (value.Count < 0)
@@ -71,5 +68,17 @@ namespace FinalPOO.Clases
                     baraja = value;
             }
         }
+        #endregion
+
+        #region Metodos
+        public cJuego Tirar_carta()
+        {
+
+        }
+        public cJuego Recoger_carta(Resto resto)
+        {
+
+        }
+        #endregion
     }
 }

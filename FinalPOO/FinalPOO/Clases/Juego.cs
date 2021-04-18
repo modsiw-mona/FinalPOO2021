@@ -66,7 +66,7 @@ namespace FinalPOO.Clases
         }
         #endregion
 
-        #region Metodos
+        #region Metodos iniciales (Para preparar el juego, van en el constructor)
         private void Barajar_cartas()
         {
             try
@@ -167,6 +167,19 @@ namespace FinalPOO.Clases
 
 
 
+        #endregion
+
+        #region Metodos para jugar el juego
+        public string Iniciar_juego()
+        {
+            bool jugador_gano = false;
+            string jugadas = "";
+            do
+            {
+
+            } while (jugador_gano == false);
+            return jugadas;
+        }
         #endregion
     }
 }
