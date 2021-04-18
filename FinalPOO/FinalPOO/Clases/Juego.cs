@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace FinalPOO.Clases
 {
@@ -20,13 +21,14 @@ namespace FinalPOO.Clases
         public Juego(List<Jugador> l_jugadores, List<Carta> l_cartas)
         {
             L_jugadores = l_jugadores;
-            L_cartas = l_cartas;           
+            L_cartas = l_cartas;
 
-            l_cjuego = Separar_cartas(true);
-            l_bonus = Separar_cartas(false);
+            l_cjuego = new List<cJuego>();
+            l_bonus = new List<Bonus>();
+            Separar_cartas();
             l_cartas_jugadas = new List<cJuego>();
 
-            resto = Crear_resto();
+            resto = new Resto();
         }
         #endregion
 
@@ -43,48 +45,30 @@ namespace FinalPOO.Clases
             }
         }
 
-        public List<Carta> L_cartas
-        {
-            get => l_cartas;
-            set
-            {
-                if (value.Count < 0)
-                    throw new Exception("La lista de cartas no puede ser menor a cero");
-                else
-                    l_cartas = value;
-            }
-        }
-
+        public List<Carta> L_cartas { get => l_cartas; set => l_cartas = value; }
         public Resto Resto {get => resto;}
-        public List<cJuego> L_cjuego { get => l_cjuego; }
-        public List<Bonus> L_bonus { get => l_bonus; }
-        public List<cJuego> L_cartas_jugadas { get => l_cartas_jugadas; }
+        public List<cJuego> L_cjuego { get => l_cjuego; set => l_cjuego = value; }  
+        public List<Bonus> L_bonus { get => l_bonus; set => l_bonus = value; }
+        public List<cJuego> L_cartas_jugadas { get => l_cartas_jugadas; set => l_cartas_jugadas = value; }
         #endregion
 
         #region Metodos
-        private dynamic Separar_cartas(bool cJuego_o_Bonus)         //Retorna "dynamic" lo cual permite retornar tipos de objetos distintos manteniendo la estructura
+        private void Separar_cartas()        
         {
             try
             {
-                bool b = false;
-                List<cJuego> arr1 = new List<cJuego>();
-                List<Bonus> arr2 = new List<Bonus>();
-
                 for (int i = 0; i < l_cartas.Count; i++)
                 {
                     if (l_cartas[i] is cJuego)
                     {
-                        l_cartas.RemoveAt(i);
-                        arr1.Add(l_cartas[i] as cJuego);
+                        l_cjuego.Add(l_cartas.ElementAt(i) as cJuego);
                     }
-                    else if (l_cartas[i] is Bonus)
+                    else
                     {
-                        l_cartas.RemoveAt(i);
-                        arr2.Add(l_cartas[i] as Bonus);
-                    }
+                        l_bonus.Add(l_cartas.ElementAt(i) as Bonus);                      
+                    }            
                 }
-                if (b == true) return arr1;                     //Si al metodo se le dice que el booleano es true, retorna la lista de tipo cJuego 
-                else return arr2;                               //Si al metodo se le dice que el booleano es false, retorna la lista de tipo Bonus
+                l_cartas.RemoveRange(0, l_cartas.Count);
             }
             catch(Exception e)
             {
@@ -96,16 +80,25 @@ namespace FinalPOO.Clases
         {
             try
             {
-                Resto resto = new Resto();
-                for (int i = 0; i < l_cartas.Count; i++)
+                if (l_cartas.Count > 0)
                 {
-                    if (l_cartas[i] is cJuego)
+                    Resto resto = new Resto();
+                    for (int i = 0; i < l_cartas.Count; i++)
                     {
-                        l_cartas.RemoveAt(i);
-                        resto.L_cartas_sobrantes.Add(l_cartas[i] as cJuego);
+                        if (l_cartas[i] is cJuego)
+                        {                     
+                            resto.L_cartas_sobrantes.Add(l_cartas[i] as cJuego);
+                            l_cartas.RemoveAt(i);
+                        }
                     }
+                    return resto;
                 }
-                return Resto;
+                else 
+                {
+                    //Resto resto2 = new Resto();
+                    //return resto2;  
+                    throw new Exception("\nLa lista de cartas principal se encuentra vacía actualmente");
+                }
             }
             catch(Exception e)
             {

@@ -1,0 +1,13 @@
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\bin\Debug\netcoreapp3.1\FinalPOO.exe
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\bin\Debug\netcoreapp3.1\FinalPOO.deps.json
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\bin\Debug\netcoreapp3.1\FinalPOO.runtimeconfig.json
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\bin\Debug\netcoreapp3.1\FinalPOO.runtimeconfig.dev.json
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\bin\Debug\netcoreapp3.1\FinalPOO.dll
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\bin\Debug\netcoreapp3.1\FinalPOO.pdb
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\obj\Debug\netcoreapp3.1\FinalPOO.csprojAssemblyReference.cache
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\obj\Debug\netcoreapp3.1\FinalPOO.AssemblyInfoInputs.cache
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\obj\Debug\netcoreapp3.1\FinalPOO.AssemblyInfo.cs
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\obj\Debug\netcoreapp3.1\FinalPOO.csproj.CoreCompileInputs.cache
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\obj\Debug\netcoreapp3.1\FinalPOO.dll
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\obj\Debug\netcoreapp3.1\FinalPOO.pdb
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\FinalPOO\FinalPOO\obj\Debug\netcoreapp3.1\FinalPOO.genruntimeconfig.cache
