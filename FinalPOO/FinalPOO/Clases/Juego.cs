@@ -20,10 +20,10 @@ namespace FinalPOO.Clases
         #endregion
 
         #region Constructor
-        public Juego(List<Jugador> l_jugadores, List<Carta> l_cartas, byte cartas_repartir)
+        public Juego(List<Jugador> l_jugadores, string ruta_l_cartas, byte cartas_repartir)
         {
             L_jugadores = l_jugadores;
-            L_cartas = l_cartas;
+            l_cartas = Cargar_cartas(ruta_l_cartas);
             Cartas_repartir = cartas_repartir;
 
             l_cjuego = new List<cJuego>();
@@ -207,16 +207,70 @@ namespace FinalPOO.Clases
         #endregion
 
         #region Metodos para jugar el juego
+        /*
         public string Iniciar_juego()
         {
-            bool jugador_gano = false;
-            string jugadas = "";
-            do
+            try
             {
+                bool jugador_gano = false;
+                string jugadas = "";
+                l_cartas_jugadas.Add(resto.L_cartas_sobrantes.ElementAt(0));
+                resto.L_cartas_sobrantes.RemoveAt(0);
+                jugadas += "INICIO EL JUEGO\n";
 
-            } while (jugador_gano == false);
-            return jugadas;
+                //Cada iteración del Do es como una ronda (1 jugada por cada jugador)
+                //Habrán rondas hasta que uno de los jugadores se quede sin cartas
+                do
+                {
+                    //Cada iteración del for es una jugada (primera iteración = jugada J1 y segunda iteración = jugada J2)
+                    for(int i=0; i<l_jugadores.Count; i++)
+                    {
+                        //Verifica si la ultima carta jugada es Estandar o Indicadora y muestra cual es
+                        if (l_cartas_jugadas.Last() is Estandar)
+                        {
+                            jugadas += "Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Estandar).Color + "" + (l_cartas_jugadas.Last() as Estandar).Numero + "\n";
+                        }
+                        else if (l_cartas_jugadas.Last() is Indicadora)
+                        {
+                            jugadas += "Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Indicadora).Color_o_numero + "\n";
+                        }
+                        //---------------------------------------------------------------------
+
+                        //Ciclo que recorre la baraja del respectivo jugador
+                        for(int j=0; j<l_jugadores.ElementAt(i).Baraja.Count; j++)
+                        {
+                            //Si esta carta es estandar y la ultima carta jugada tambien es estandar
+                            if(l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Estandar && l_cartas_jugadas.Last() is Estandar)
+                            {
+                                //Si el color o el numero de la carta coinciden con el color o el número de la ultima carta jugada
+                                if((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Color.Equals((l_cartas_jugadas.Last() as Estandar).Color) ||
+                                    (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Numero.Equals((l_cartas_jugadas.Last() as Estandar).Numero))
+                                {
+                                    //Tira la carta a l_cartas_jugadas y pasa a la siguiente iteración
+                                }                               
+                            }
+                            //----------------------------------------------------------------------
+
+                            //Si la carta es indicadora y la ultima carta es Estandar
+                            else if(l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Indicadora && l_cartas_jugadas.Last() is Estandar)
+                            {
+                                if((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Color) ||
+                                    (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Numero)
+                                    {
+                                }
+                            }
+                            //----------------------------------------------------------------------
+                        }
+                    }
+                } while (jugador_gano == false);
+                return jugadas;
+            }
+            catch(Exception e)
+            {
+                throw new Exception("\nHa ocurrido un error en el metodo Iniciar_juego de la clase Juego " + e);
+            }        
         }
+        */
         #endregion
     }
 }
