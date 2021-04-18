@@ -11,6 +11,7 @@ namespace FinalPOO.Clases
         private List<Jugador> l_jugadores;
         private List<Carta> l_cartas;
         private Resto resto;
+        private byte cartas_repartir;
 
         private List<cJuego> l_cjuego; 
         private List<Bonus> l_bonus;
@@ -18,16 +19,18 @@ namespace FinalPOO.Clases
         #endregion
 
         #region Constructor
-        public Juego(List<Jugador> l_jugadores, List<Carta> l_cartas)
+        public Juego(List<Jugador> l_jugadores, List<Carta> l_cartas, byte cartas_repartir)
         {
             L_jugadores = l_jugadores;
             L_cartas = l_cartas;
+            Cartas_repartir = cartas_repartir;
 
             l_cjuego = new List<cJuego>();
             l_bonus = new List<Bonus>();
             Barajar_cartas();
             Separar_cartas();
             l_cartas_jugadas = new List<cJuego>();
+            Repartir_cartas();
 
             resto = new Resto();
         }
@@ -51,6 +54,17 @@ namespace FinalPOO.Clases
         public List<cJuego> L_cjuego { get => l_cjuego; set => l_cjuego = value; }  
         public List<Bonus> L_bonus { get => l_bonus; set => l_bonus = value; }
         public List<cJuego> L_cartas_jugadas { get => l_cartas_jugadas; set => l_cartas_jugadas = value; }
+        public byte Cartas_repartir 
+        { 
+            get => cartas_repartir; 
+            set
+            {
+                if (value < 2)
+                    throw new Exception("No se pueden repartir menos de dos cartas");
+                else
+                    cartas_repartir = value;
+            }
+        }
         #endregion
 
         #region Metodos
@@ -77,7 +91,7 @@ namespace FinalPOO.Clases
                 throw new Exception("\nOcurrió un error en el metodo Barajar_cartas de la clase Juego " + e);
             }
         }
-        private void Separar_cartas()        
+        private void Separar_cartas()
         {
             try
             {
@@ -104,13 +118,20 @@ namespace FinalPOO.Clases
                 throw new Exception("\nOcurrió un error en el metodo Separar_cartas de la clase Juego " + e);
             }                 
         }
-        private void Repartir_cartas(byte cartas_por_jugador)
+        private void Repartir_cartas()
         {
             try
             {
-                if (l_cjuego.Count > 0 && (l_cjuego.Count / l_jugadores.Count) >= cartas_por_jugador)
+                if (l_cjuego.Count > 0 && l_jugadores.Count > 1 &&(l_cjuego.Count / l_jugadores.Count) >= cartas_repartir)
                 {
-                    //l_cjuego.
+                    for(int i=0; i<l_jugadores.Count; i++)
+                    {
+                        for(int j=0; j< cartas_repartir; j++)
+                        {
+                            l_jugadores.ElementAt(i).Baraja.Add(l_cjuego.ElementAt(j));
+                            l_cjuego.RemoveAt(j);
+                        }
+                    }
                 }
                 else
                     throw new Exception("\nLa lista de cartas cJuego se encuentra vacía, no se pueden repartir las cartas a los jugadores\n");

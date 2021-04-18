@@ -47,18 +47,15 @@ namespace FinalPOO
             pre = new Premio("344", "bota 4 cartas");
             cartasprueba1.Add(pre);
 
+            Juego juego1 = new Juego(prueba1, cartasprueba1, 3);
 
-            Console.WriteLine("Cantidad de cartas en lista del ppal " + cartasprueba1.Count);
-
-            Juego juego1 = new Juego(prueba1, cartasprueba1);
-
-            Console.WriteLine("Cantidad de cartas en l_cartas " + juego1.L_cartas.Count);
-            Console.WriteLine("Cantidad de cartas en l_cJuego " + juego1.L_cjuego.Count);
-            Console.WriteLine("Cantidad de cartas en l_Bonus " + juego1.L_bonus.Count);
-
-            Console.WriteLine("Cantidad de cartas en lista de Resto " + juego1.Resto.L_cartas_sobrantes.Count + "\n");
-
-            foreach (cJuego c in juego1.L_cjuego)
+            Console.WriteLine("Cartas j1: ");
+            foreach (cJuego c in juego1.L_jugadores.ElementAt(0).Baraja)
+            {
+                Console.WriteLine(c.Id_carta);
+            }
+            Console.WriteLine("Cartas j2: ");
+            foreach (cJuego c in juego1.L_jugadores.ElementAt(1).Baraja)
             {
                 Console.WriteLine(c.Id_carta);
             }
