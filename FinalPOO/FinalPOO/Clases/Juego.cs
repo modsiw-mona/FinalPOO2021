@@ -25,6 +25,7 @@ namespace FinalPOO.Clases
 
             l_cjuego = new List<cJuego>();
             l_bonus = new List<Bonus>();
+            Barajar_cartas();
             Separar_cartas();
             l_cartas_jugadas = new List<cJuego>();
 
@@ -53,27 +54,71 @@ namespace FinalPOO.Clases
         #endregion
 
         #region Metodos
+        private void Barajar_cartas()
+        {
+            try
+            {
+                if (l_cartas.Count > 0)
+                {
+                    Random r = new Random();
+                    for (int i = 0; i < l_cartas.Count; i++)
+                    {
+                        int j = r.Next(0, i);
+                        Carta temp = l_cartas[j];
+                        l_cartas[j] = l_cartas[i];
+                        l_cartas[i] = temp;
+                    }
+                }
+                else
+                    throw new Exception("\nLa lista de cartas se encuentra vacía, no se pueden barajar las cartas\n");
+            }
+            catch(Exception e)
+            {
+                throw new Exception("\nOcurrió un error en el metodo Barajar_cartas de la clase Juego " + e);
+            }
+        }
         private void Separar_cartas()        
         {
             try
             {
-                for (int i = 0; i < l_cartas.Count; i++)
+                if (l_cartas.Count > 0)
                 {
-                    if (l_cartas[i] is cJuego)
+                    for (int i = 0; i < l_cartas.Count; i++)
                     {
-                        l_cjuego.Add(l_cartas.ElementAt(i) as cJuego);
+                        if (l_cartas[i] is cJuego)
+                        {
+                            l_cjuego.Add(l_cartas.ElementAt(i) as cJuego);
+                        }
+                        else
+                        {
+                            l_bonus.Add(l_cartas.ElementAt(i) as Bonus);
+                        }
                     }
-                    else
-                    {
-                        l_bonus.Add(l_cartas.ElementAt(i) as Bonus);                      
-                    }            
+                    l_cartas.RemoveRange(0, l_cartas.Count);
                 }
-                l_cartas.RemoveRange(0, l_cartas.Count);
+                else
+                    throw new Exception("\nLa lista de cartas se encuentra vacía, no se pueden separar las cartas\n");
             }
             catch(Exception e)
             {
                 throw new Exception("\nOcurrió un error en el metodo Separar_cartas de la clase Juego " + e);
             }                 
+        }
+        private void Repartir_cartas(byte cartas_por_jugador)
+        {
+            try
+            {
+                if (l_cjuego.Count > 0 && (l_cjuego.Count / l_jugadores.Count) >= cartas_por_jugador)
+                {
+                    //l_cjuego.
+                }
+                else
+                    throw new Exception("\nLa lista de cartas cJuego se encuentra vacía, no se pueden repartir las cartas a los jugadores\n");
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Ocurrió un error en el metodo Repartir_cartas de la clase Juego " + e);
+            }
         }
    
         private Resto Crear_resto()

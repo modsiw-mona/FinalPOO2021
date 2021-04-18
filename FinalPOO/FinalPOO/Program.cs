@@ -20,7 +20,7 @@ namespace FinalPOO
             prueba1.Add(jugador2);
 
             List<Carta> cartasprueba1 = new List<Carta>();
-           
+
             Estandar est;
             est = new Estandar("123", 'R', '2');
             cartasprueba1.Add(est);
@@ -55,10 +55,13 @@ namespace FinalPOO
             Console.WriteLine("Cantidad de cartas en l_cartas " + juego1.L_cartas.Count);
             Console.WriteLine("Cantidad de cartas en l_cJuego " + juego1.L_cjuego.Count);
             Console.WriteLine("Cantidad de cartas en l_Bonus " + juego1.L_bonus.Count);
-            
+
             Console.WriteLine("Cantidad de cartas en lista de Resto " + juego1.Resto.L_cartas_sobrantes.Count + "\n");
 
-            
+            foreach (cJuego c in juego1.L_cjuego)
+            {
+                Console.WriteLine(c.Id_carta);
             }
+        }   
     }
 }
