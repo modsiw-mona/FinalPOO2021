@@ -254,12 +254,16 @@ namespace FinalPOO.Clases
                             //Si la carta es indicadora y la ultima carta es Estandar
                             else if(l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Indicadora && l_cartas_jugadas.Last() is Estandar)
                             {
-                                if((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Color) ||
+                                if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Color) ||
                                     (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Numero)
                                     {
                                 }
+                                }
                             }
                             //----------------------------------------------------------------------
+
+                            //Hacer si es Estandar y la otra Indicadora
+                            //Hacer si es indicadora y la otra tambien es indicadora
                         }
                     }
                 } while (jugador_gano == false);
