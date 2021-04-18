@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.IO;
 
 namespace FinalPOO.Clases
 {
@@ -67,6 +68,45 @@ namespace FinalPOO.Clases
         #endregion
 
         #region Metodos iniciales (Para preparar el juego, van en el constructor)
+
+        private List<Carta> Cargar_cartas(string ruta)
+        {
+            try
+            {
+                List<Carta> l_cartas_temp = new List<Carta>();
+                string linea;
+                StreamReader archivo = new StreamReader(ruta);
+                string[] info_archivo;
+                
+                Estandar e_temp;
+                Indicadora i_temp;
+                byte contador = 0;
+
+                linea = archivo.ReadLine();
+                while(linea != null)
+                {
+                    info_archivo = linea.Split('|');
+                    if(contador < 80)
+                    {
+                        e_temp = new Estandar(info_archivo[0], char.Parse(info_archivo[1]), char.Parse(info_archivo[2]));
+                        l_cartas_temp.Add(e_temp);
+                    }
+                    else
+                    {
+                        i_temp = new Indicadora(info_archivo[0], char.Parse(info_archivo[1]));
+                        l_cartas_temp.Add(i_temp);
+                    }
+                    contador++;
+                    linea = archivo.ReadLine();
+                }
+                return l_cartas_temp;
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Ocurrió un error en el metodo Cargar_cartas de la clase Juego " + e);
+            }
+        }
+
         private void Barajar_cartas()
         {
             try
@@ -164,9 +204,6 @@ namespace FinalPOO.Clases
                 throw new Exception("\nOcurrió un error en el metodo Crear_resto de la clase Juego " + e);
             }         
         }
-
-
-
         #endregion
 
         #region Metodos para jugar el juego
