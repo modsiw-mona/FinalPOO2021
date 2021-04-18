@@ -1,0 +1,15 @@
+/Users/sof/Projects/CARTASTXT/CARTASTXT/bin/Debug/net5.0/CARTASTXT.deps.json
+/Users/sof/Projects/CARTASTXT/CARTASTXT/bin/Debug/net5.0/CARTASTXT.runtimeconfig.json
+/Users/sof/Projects/CARTASTXT/CARTASTXT/bin/Debug/net5.0/CARTASTXT.runtimeconfig.dev.json
+/Users/sof/Projects/CARTASTXT/CARTASTXT/bin/Debug/net5.0/CARTASTXT.dll
+/Users/sof/Projects/CARTASTXT/CARTASTXT/bin/Debug/net5.0/ref/CARTASTXT.dll
+/Users/sof/Projects/CARTASTXT/CARTASTXT/bin/Debug/net5.0/CARTASTXT.pdb
+/Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/CARTASTXT.csprojAssemblyReference.cache
+/Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/CARTASTXT.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/CARTASTXT.AssemblyInfoInputs.cache
+/Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/CARTASTXT.AssemblyInfo.cs
+/Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/CARTASTXT.csproj.CoreCompileInputs.cache
+/Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/CARTASTXT.dll
+/Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/ref/CARTASTXT.dll
+/Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/CARTASTXT.pdb
+/Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/CARTASTXT.genruntimeconfig.cache
