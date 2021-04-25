@@ -9,7 +9,7 @@ namespace cartas
 
         static void Main(string[] args)
         {
-            StreamWriter sw = new StreamWriter("/Users/sof/Documents/CartasPrueba.txt");
+            StreamWriter sw = new StreamWriter("/Users/sof/Desktop/CartasArregladas.txt");
 
             for (int i = 0; i < 4; i++) //4 colores
             {
@@ -19,19 +19,19 @@ namespace cartas
                     {
                         if (i == 0) //rojo red
                         {
-                            sw.WriteLine("R" + j + "" + (k + 1) + "|" + 'R' + "|" + char.GetNumericValue(char.Parse(j + "")));
+                            sw.WriteLine("R" + j + "" + "-" + (k + 1) + "|" + 'R' + "|" + char.GetNumericValue(char.Parse(j + "")));
                         }
                         else if (i == 1) //verde green 
                         {
-                            sw.WriteLine("G" + j + "" + (k + 1) + "|" + 'G' + "|" + char.GetNumericValue(char.Parse(j + "")));
+                            sw.WriteLine("G" + j + "" + "-" + (k + 1) + "|" + 'G' + "|" + char.GetNumericValue(char.Parse(j + "")));
                         }
                         else if (i == 2) //amarillo yellow
                         {
-                            sw.WriteLine("Y" + j + "" + (k + 1) + "|" + 'Y' + "|" + char.GetNumericValue(char.Parse(j + "")));
+                            sw.WriteLine("Y" + j + "" + "-" + (k + 1) + "|" + 'Y' + "|" + char.GetNumericValue(char.Parse(j + "")));
                         }
                         else if (i == 3) //azul //blue
                         {
-                            sw.WriteLine("B" + j + "" + (k + 1) + "|" + 'B' + "|" + char.GetNumericValue(char.Parse(j + "")));
+                            sw.WriteLine("B" + j + "" + "-" + (k + 1) + "|" + 'B' + "|" + char.GetNumericValue(char.Parse(j + "")));
                         }
 
                     }
@@ -44,19 +44,19 @@ namespace cartas
                 {
                     if (i == 0) //rojo red
                     {
-                        sw.WriteLine("R" + (j + 1) + "|" + 'R');
+                        sw.WriteLine("R" + "-" + (j + 1) + "|" + 'R');
                     }
                     else if (i == 1) //verde green 
                     {
-                        sw.WriteLine("G" + (j + 1) + "|" + 'G');
+                        sw.WriteLine("G" + "-" + (j + 1) + "|" + 'G');
                     }
                     else if (i == 2) //amarillo yellow
                     {
-                        sw.WriteLine("Y" + (j + 1) + "|" + 'Y');
+                        sw.WriteLine("Y" + "-" + (j + 1) + "|" + 'Y');
                     }
                     else if (i == 3) //azul //blue
                     {
-                        sw.WriteLine("B" + (j + 1) + "|" + 'B');
+                        sw.WriteLine("B" + "-" + (j + 1) + "|" + 'B');
                     }
                 }
             }
@@ -65,7 +65,7 @@ namespace cartas
             {
                 for (int j = 0; j < 3; j++) //3 tandas
                 {
-                    sw.WriteLine(i + "" + (j + 1) + "|" + char.GetNumericValue(char.Parse(i + "")));
+                    sw.WriteLine(i + "" + "-" + (j + 1) + "|" + char.GetNumericValue(char.Parse(i + "")));
                 }
 
             }

@@ -13,3 +13,18 @@
 /Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/ref/CARTASTXT.dll
 /Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/CARTASTXT.pdb
 /Users/sof/Projects/CARTASTXT/CARTASTXT/obj/Debug/net5.0/CARTASTXT.genruntimeconfig.cache
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/bin/Debug/net5.0/CARTASTXT.deps.json
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/bin/Debug/net5.0/CARTASTXT.runtimeconfig.json
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/bin/Debug/net5.0/CARTASTXT.runtimeconfig.dev.json
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/bin/Debug/net5.0/CARTASTXT.dll
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/bin/Debug/net5.0/ref/CARTASTXT.dll
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/bin/Debug/net5.0/CARTASTXT.pdb
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/obj/Debug/net5.0/CARTASTXT.csprojAssemblyReference.cache
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/obj/Debug/net5.0/CARTASTXT.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/obj/Debug/net5.0/CARTASTXT.AssemblyInfoInputs.cache
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/obj/Debug/net5.0/CARTASTXT.AssemblyInfo.cs
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/obj/Debug/net5.0/CARTASTXT.csproj.CoreCompileInputs.cache
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/obj/Debug/net5.0/CARTASTXT.dll
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/obj/Debug/net5.0/ref/CARTASTXT.dll
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/obj/Debug/net5.0/CARTASTXT.pdb
+/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/obj/Debug/net5.0/CARTASTXT.genruntimeconfig.cache

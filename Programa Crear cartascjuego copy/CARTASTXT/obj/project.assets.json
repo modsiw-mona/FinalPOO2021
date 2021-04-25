@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sof/Projects/CARTASTXT/CARTASTXT/CARTASTXT.csproj",
+      "projectUniqueName": "/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/CARTASTXT.csproj",
       "projectName": "CARTASTXT",
-      "projectPath": "/Users/sof/Projects/CARTASTXT/CARTASTXT/CARTASTXT.csproj",
+      "projectPath": "/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/CARTASTXT.csproj",
       "packagesPath": "/Users/sof/.nuget/packages/",
-      "outputPath": "/Users/sof/Projects/CARTASTXT/CARTASTXT/obj/",
+      "outputPath": "/Users/sof/Documents/GitHub/FinalPOO2021/Programa Crear cartascjuego copy/CARTASTXT/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/sof/.config/NuGet/NuGet.Config"
