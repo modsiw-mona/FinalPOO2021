@@ -216,20 +216,22 @@ namespace FinalPOO.Clases
                 List<string> jugadas = new List<string>();
                 l_cartas_jugadas.Add(resto.L_cartas_sobrantes.ElementAt(0));
                 resto.L_cartas_sobrantes.RemoveAt(0);
-                jugadas.Add("INICIO EL JUEGO");
+                jugadas.Add("INICIO DEL JUEGO");
 
+                int rondas = 1;
+                jugadas.Add("Ronda " + rondas);
                 for (int i = 0; i < l_jugadores.Count; i++)
                 {
                     jugadas.Add(Mostrar_ultima_carta());
-
                     jugadas.Add("Es el turno de " + l_jugadores.ElementAt(i).Nickname);
-
                     jugadas.Add(Mostrar_baraja_jugador(i));
 
-                    bool puede_jugar_carta = false;
+                    //int num_cartas = l_jugadores.ElementAt(i).Baraja.Count;
+                    //int cartas_que_no = 0;
+                    bool jugo_carta = false;
                     //Ciclo que recorre la baraja del respectivo jugador
                     for (int j = 0; j < l_jugadores.ElementAt(i).Baraja.Count; j++)
-                    {
+                    {                                      
                         //Si esta carta es estandar y la ultima carta jugada tambien es estandar
                         if (l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Estandar && l_cartas_jugadas.Last() is Estandar)
                         {
@@ -238,7 +240,7 @@ namespace FinalPOO.Clases
                                 (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Numero.Equals((l_cartas_jugadas.Last() as Estandar).Numero))
                             {
                                 jugadas.Add(l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j));
-                                puede_jugar_carta = true;
+                                jugo_carta = true;
                                 break;
                             }
                         }
@@ -252,7 +254,7 @@ namespace FinalPOO.Clases
                             {
                                 //Tira la carta a l_cartas_jugadas y pasa a la siguiente iteración
                                 jugadas.Add(l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j));
-                                puede_jugar_carta = true;
+                                jugo_carta = true;
                                 break;
                             }
                         }
@@ -266,7 +268,7 @@ namespace FinalPOO.Clases
                             {
                                 //Tira la carta a l_cartas_jugadas y pasa a la siguiente iteración
                                 jugadas.Add(l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j));
-                                puede_jugar_carta = true;
+                                jugo_carta = true;
                                 break;
                             }
                         }
@@ -279,122 +281,112 @@ namespace FinalPOO.Clases
                             {
                                 //Tira la carta a l_cartas_jugadas y pasa a la siguiente iteración
                                 jugadas.Add(l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j));
-                                puede_jugar_carta = true;
+                                jugo_carta = true;
                                 break;
                             }
                         }
-                        //----------------------------------------------------------------------
+                        //----------------------------------------------------------------------                                            
                     }
 
-                    if (puede_jugar_carta == false)
-                        jugadas.Add(resto.Entregar_carta(l_jugadores.ElementAt(i).Baraja, 1));
-
-                    jugadas.Add(Mostrar_baraja_jugador(i));                   
+                    if (jugo_carta == false)
+                    {
+                        jugadas.Add(resto.Entregar_carta(l_jugadores.ElementAt(i).Baraja, 1));           
+                    }
+                    jugadas.Add(Mostrar_baraja_jugador(i));
                 }
                 jugadas.Add(Mostrar_ultima_carta());
 
 
-                //---------------------------------------------------------------------
-
                 /*
-                //Cada iteración del Do es como una ronda (1 jugada por cada jugador)
-                //Habrán rondas hasta que uno de los jugadores se quede sin cartas
                 do
                 {
-                    int iter = 0;
-                    //Cada iteración del for es una jugada (primera iteración = jugada J1 y segunda iteración = jugada J2)
-                    for(int i=0; i<l_jugadores.Count; i++)
+                    int rondas = 1;
+                    jugadas.Add("Ronda " + rondas);
+                    for (int i = 0; i < l_jugadores.Count; i++)
                     {
-                        //Verifica si la ultima carta jugada es Estandar o Indicadora y muestra cual es
-                        if (l_cartas_jugadas.Last() is Estandar)
-                        {
-                            jugadas.Add("Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Estandar).Color + "" + (l_cartas_jugadas.Last() as Estandar).Numero);
-                        }
-                        else if (l_cartas_jugadas.Last() is Indicadora)
-                        {
-                            jugadas.Add("Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Indicadora).Color_o_numero);
-                        }
-                        //---------------------------------------------------------------------
-                        
-                        /*
-                        string s_temp = "";
-                        foreach(cJuego c in l_jugadores.ElementAt(i).Baraja)
-                        {
-                            s_temp += c.Id_carta + "  ";
-                        }
-                        jugadas.Add(s_temp);
-
-                        bool puede_jugar_carta = false;
+                        jugadas.Add(Mostrar_ultima_carta());
+                        jugadas.Add("Es el turno de " + l_jugadores.ElementAt(i).Nickname);
+                        jugadas.Add(Mostrar_baraja_jugador(i));
+                     
                         //Ciclo que recorre la baraja del respectivo jugador
-                        for(int j=0; j<l_jugadores.ElementAt(i).Baraja.Count; j++)
+                        for (int j = 0; j < l_jugadores.ElementAt(i).Baraja.Count; j++)
                         {
+                            int num_cartas = l_jugadores.ElementAt(i).Baraja.Count;
+                            int cartas_que_no = 0;
+
                             //Si esta carta es estandar y la ultima carta jugada tambien es estandar
-                            if(l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Estandar && l_cartas_jugadas.Last() is Estandar)
+                            if (l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Estandar && l_cartas_jugadas.Last() is Estandar)
                             {
                                 //Si el color o el numero de la carta coinciden con el color o el número de la ultima carta jugada
-                                if((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Color.Equals((l_cartas_jugadas.Last() as Estandar).Color) ||
+                                if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Color.Equals((l_cartas_jugadas.Last() as Estandar).Color) ||
                                     (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Numero.Equals((l_cartas_jugadas.Last() as Estandar).Numero))
                                 {
                                     jugadas.Add(l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j));
-                                    puede_jugar_carta = true;
                                     break;
-                                }                               
+                                }
                             }
                             //----------------------------------------------------------------------
 
                             //Si la carta es indicadora y la ultima carta es Estandar
-                            else if(l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Indicadora && l_cartas_jugadas.Last() is Estandar)
+                            else if (l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Indicadora && l_cartas_jugadas.Last() is Estandar)
                             {
                                 if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Color) ||
                                     (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Numero))
                                 {
                                     //Tira la carta a l_cartas_jugadas y pasa a la siguiente iteración
                                     jugadas.Add(l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j));
-                                    puede_jugar_carta = true;
                                     break;
                                 }
                             }
                             //----------------------------------------------------------------------
 
                             //Hacer si es Estandar y la otra Indicadora
-                            else if((l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Estandar && l_cartas_jugadas.Last() is Indicadora))
+                            else if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Estandar && l_cartas_jugadas.Last() is Indicadora))
                             {
-                                if((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Color.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero) ||
+                                if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Color.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero) ||
                                     (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Numero.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero))
                                 {
                                     //Tira la carta a l_cartas_jugadas y pasa a la siguiente iteración
                                     jugadas.Add(l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j));
-                                    puede_jugar_carta = true;
                                     break;
                                 }
                             }
                             //----------------------------------------------------------------------
 
                             //Hacer si es indicadora y la otra tambien es indicadora
-                            else if((l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Indicadora && l_cartas_jugadas.Last() is Indicadora))
+                            else if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Indicadora && l_cartas_jugadas.Last() is Indicadora))
                             {
-                                if((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero))
+                                if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero))
                                 {
                                     //Tira la carta a l_cartas_jugadas y pasa a la siguiente iteración
                                     jugadas.Add(l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j));
-                                    puede_jugar_carta = true;
                                     break;
                                 }
                             }
                             //----------------------------------------------------------------------
-                          
-                        }
-                        if(puede_jugar_carta == false)
-                            jugadas.Add(resto.Entregar_carta(l_jugadores.ElementAt(i).Baraja, 5));
-                                      
-                    }
-                    iter++;
-                    if (iter == 2 || l_jugadores.ElementAt(0).Baraja.Count == 0 || l_jugadores.ElementAt(1).Baraja.Count == 0)
-                        jugador_gano = true;
+                            else
+                            {
+                                cartas_que_no++;
+                            }
 
+                            if (cartas_que_no == num_cartas)
+                            {
+                                jugadas.Add(resto.Entregar_carta(l_jugadores.ElementAt(i).Baraja, 1));
+                                break;
+                            }
+                        }
+                        jugadas.Add(Mostrar_baraja_jugador(i));
+                    }
+                    jugadas.Add(Mostrar_ultima_carta());
+
+                    
+                    if (rondas == 2)
+                        jugador_gano = true;
+                    rondas++;
 
                 } while (jugador_gano == false);
-                */
+                */         
+
                 return jugadas;
             }
             catch(Exception e)

@@ -58,12 +58,7 @@ namespace FinalPOO
                 
                 //Console.WriteLine(juego1.Iniciar_juego().Count);
 
-                /*
-                for(int i=0; i < 10; i++)
-                {
-                    Console.WriteLine(juego1.Iniciar_juego()[i]);
-                }
-                */
+                
                 
             }
             catch(Exception err)
