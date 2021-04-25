@@ -224,12 +224,7 @@ namespace FinalPOO.Clases
 
                     jugadas.Add("Es el turno de " + l_jugadores.ElementAt(i).Nickname);
 
-                    string s_temp = "";
-                    foreach (cJuego c in l_jugadores.ElementAt(i).Baraja)
-                    {
-                        s_temp += c.Id_carta + "  ";
-                    }
-                    jugadas.Add(s_temp);
+                    jugadas.Add(Mostrar_baraja_jugador(i));
 
                     bool puede_jugar_carta = false;
                     //Ciclo que recorre la baraja del respectivo jugador
@@ -294,12 +289,7 @@ namespace FinalPOO.Clases
                     if (puede_jugar_carta == false)
                         jugadas.Add(resto.Entregar_carta(l_jugadores.ElementAt(i).Baraja, 1));
 
-                    string s_temp2 = "";
-                    foreach (cJuego c in l_jugadores.ElementAt(i).Baraja)
-                    {
-                        s_temp2 += c.Id_carta + "  ";
-                    }
-                    jugadas.Add(s_temp2);
+                    jugadas.Add(Mostrar_baraja_jugador(i));                   
                 }
                 jugadas.Add(Mostrar_ultima_carta());
 
@@ -415,20 +405,50 @@ namespace FinalPOO.Clases
 
         public string Mostrar_ultima_carta()
         {
-            string s = " ";
-            if (l_cartas_jugadas.Last() is Estandar)
+            try
             {
-                s = "Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Estandar).Color + "" + (l_cartas_jugadas.Last() as Estandar).Numero;
+                if (l_cartas_jugadas.Count > 0)
+                {
+                    string s = " ";
+                    if (l_cartas_jugadas.Last() is Estandar)
+                    {
+                        s = "Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Estandar).Color + "" + (l_cartas_jugadas.Last() as Estandar).Numero;
+                    }
+                    else if (l_cartas_jugadas.Last() is Indicadora)
+                    {
+                        s = "Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Indicadora).Color_o_numero;
+                    }
+                    return s;
+                }
+                else
+                    throw new Exception("La lista de cartas jugadas está vacía");
             }
-            else if (l_cartas_jugadas.Last() is Indicadora)
+            catch(Exception e)
             {
-                s = "Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Indicadora).Color_o_numero;
-            }
-            return s;
+                throw new Exception("Ocurrió un error en el metodo Mostrar_ultima_carta " + e);
+            }         
         }
-        
-        #endregion
-    
-    
+        public string Mostrar_baraja_jugador(int ind)
+        {
+            try
+            {
+                if (l_jugadores.ElementAt(ind).Baraja.Count > 0)
+                {
+                    string s_temp = "";
+                    foreach (cJuego c in l_jugadores.ElementAt(ind).Baraja)
+                    {
+                        s_temp += c.Id_carta + "  ";
+                    }
+                    return s_temp;
+                }
+                else
+                    return "El jugador " + l_jugadores.ElementAt(ind).Nickname + " ya no tiene cartas para jugar";
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Ocurrió un error en el metodo Mostrar_baraja_jugador " + e);
+            }         
+        }    
+        #endregion  
     }
 }
