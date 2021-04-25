@@ -310,6 +310,14 @@ namespace FinalPOO.Clases
                     }
                     jugadas.Add(s_temp2);
                 }
+                if (l_cartas_jugadas.Last() is Estandar)
+                {
+                    jugadas.Add("Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Estandar).Color + "" + (l_cartas_jugadas.Last() as Estandar).Numero);
+                }
+                else if (l_cartas_jugadas.Last() is Indicadora)
+                {
+                    jugadas.Add("Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Indicadora).Color_o_numero);
+                }
 
 
                 //---------------------------------------------------------------------
