@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.IO;
 using FinalPOO.Interfaces;
 
 namespace FinalPOO.Clases
@@ -19,13 +21,23 @@ namespace FinalPOO.Clases
         #endregion
 
         #region Accesores
-        public List<cJuego> L_cartas_sobrantes { get => l_cartas_sobrantes; }
+        public List<cJuego> L_cartas_sobrantes { get => l_cartas_sobrantes; set => l_cartas_sobrantes = value; }
         #endregion
 
         #region Metodos 
-        public cJuego Entregar_carta()
+        public string Entregar_carta(List<cJuego> destino, int indice)
         {
-            throw new NotImplementedException();
+            try
+            {
+                //cJuego c_temp = l_cartas_sobrantes.ElementAt(0);
+                destino.Add(l_cartas_sobrantes.ElementAt(0));
+                l_cartas_sobrantes.RemoveAt(0);
+                return "El resto entregó una carta ";
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Ha ocurrido un error al entregar carta desde la clase Resto " + e);
+            }
         }
         #endregion
     }

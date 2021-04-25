@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.IO;
 using FinalPOO.Interfaces;
 
 namespace FinalPOO.Clases
@@ -78,9 +80,19 @@ namespace FinalPOO.Clases
 
         }*/
 
-        public cJuego Entregar_carta()
+        public string Entregar_carta(List<cJuego> destino, int indice)
         {
-            throw new NotImplementedException();
+            try
+            {
+                cJuego c_temp = baraja.ElementAt(indice);
+                destino.Add(c_temp);
+                baraja.RemoveAt(indice);          
+                return "El jugador " + nickname + " tiró la carta " + c_temp.Id_carta;
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Ocurrió un error al entregar carta en la clase Jugador " + e);
+            }
         }
         #endregion
     }

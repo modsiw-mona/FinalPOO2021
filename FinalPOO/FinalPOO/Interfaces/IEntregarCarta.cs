@@ -7,6 +7,6 @@ namespace FinalPOO.Interfaces
 {
     interface IEntregarCarta
     {
-        cJuego Entregar_carta();
+        string Entregar_carta(List<cJuego> destino, int indice);
     }
 }
