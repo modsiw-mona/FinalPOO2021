@@ -220,16 +220,7 @@ namespace FinalPOO.Clases
 
                 for (int i = 0; i < l_jugadores.Count; i++)
                 {
-                    //Verifica si la ultima carta jugada es Estandar o Indicadora y muestra cual es
-                    if (l_cartas_jugadas.Last() is Estandar)
-                    {
-                        jugadas.Add("Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Estandar).Color + "" + (l_cartas_jugadas.Last() as Estandar).Numero);
-                    }
-                    else if (l_cartas_jugadas.Last() is Indicadora)
-                    {
-                        jugadas.Add("Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Indicadora).Color_o_numero);
-                    }
-                    //---------------------------------------------------------------------
+                    jugadas.Add(Mostrar_ultima_carta());
 
                     jugadas.Add("Es el turno de " + l_jugadores.ElementAt(i).Nickname);
 
@@ -310,14 +301,7 @@ namespace FinalPOO.Clases
                     }
                     jugadas.Add(s_temp2);
                 }
-                if (l_cartas_jugadas.Last() is Estandar)
-                {
-                    jugadas.Add("Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Estandar).Color + "" + (l_cartas_jugadas.Last() as Estandar).Numero);
-                }
-                else if (l_cartas_jugadas.Last() is Indicadora)
-                {
-                    jugadas.Add("Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Indicadora).Color_o_numero);
-                }
+                jugadas.Add(Mostrar_ultima_carta());
 
 
                 //---------------------------------------------------------------------
@@ -428,7 +412,23 @@ namespace FinalPOO.Clases
                 throw new Exception("\nHa ocurrido un error en el metodo Iniciar_juego de la clase Juego " + e);
             }        
         }
+
+        public string Mostrar_ultima_carta()
+        {
+            string s = " ";
+            if (l_cartas_jugadas.Last() is Estandar)
+            {
+                s = "Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Estandar).Color + "" + (l_cartas_jugadas.Last() as Estandar).Numero;
+            }
+            else if (l_cartas_jugadas.Last() is Indicadora)
+            {
+                s = "Carta de más arriba en la pila: " + (l_cartas_jugadas.Last() as Indicadora).Color_o_numero;
+            }
+            return s;
+        }
         
         #endregion
+    
+    
     }
 }
