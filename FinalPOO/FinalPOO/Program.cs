@@ -20,7 +20,7 @@ namespace FinalPOO
                 prueba1.Add(jugador1);
                 prueba1.Add(jugador2);
 
-                Juego juego1 = new Juego(prueba1, "C:\\Users\\gabri\\Downloads\\CartasPrueba.txt", 3);
+                Juego juego1 = new Juego(prueba1, "C:\\Users\\gabri\\Downloads\\CartasArregladas.txt", 3);
 
                 /* 
                 Console.WriteLine(juego1.Resto.L_cartas_sobrantes.Count);
@@ -49,7 +49,7 @@ namespace FinalPOO
                     Console.WriteLine(c.Id_carta);
                 }*/
 
-                
+                Console.WriteLine( juego1.Resto.L_cartas_sobrantes.Count());
                 foreach(string s in juego1.Iniciar_juego())
                 {
                     Console.WriteLine(s);

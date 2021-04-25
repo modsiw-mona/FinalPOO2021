@@ -30,10 +30,10 @@ namespace FinalPOO.Clases
             try
             {
                 //cJuego c_temp = l_cartas_sobrantes.ElementAt(0);
-                string s = l_cartas_sobrantes.Last().Id_carta;
-                destino.Add(l_cartas_sobrantes.Last());
-                l_cartas_sobrantes.RemoveAt(l_cartas_sobrantes.Count -1);
-                return "El resto entregó la carta " + s;
+                //string s = l_cartas_sobrantes.ElementAt(0).Id_carta;
+                destino.Add(L_cartas_sobrantes.ElementAt(indice));
+                L_cartas_sobrantes.RemoveAt(indice);
+                return "El resto entregó la carta " ;
             }
             catch(Exception e)
             {
