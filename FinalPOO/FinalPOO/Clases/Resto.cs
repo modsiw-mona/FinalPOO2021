@@ -29,11 +29,16 @@ namespace FinalPOO.Clases
         {
             try
             {
-                //cJuego c_temp = l_cartas_sobrantes.ElementAt(0);
-                //string s = l_cartas_sobrantes.ElementAt(0).Id_carta;
-                destino.Add(L_cartas_sobrantes.ElementAt(indice));
-                L_cartas_sobrantes.RemoveAt(indice);
-                return "El resto entregó la carta " ;
+                if (l_cartas_sobrantes.Count != 0)
+                {
+                    //cJuego c_temp = l_cartas_sobrantes.ElementAt(0);
+                    string s = l_cartas_sobrantes.ElementAt(indice).Id_carta;
+                    destino.Add(L_cartas_sobrantes.ElementAt(indice));
+                    L_cartas_sobrantes.RemoveAt(indice);
+                    return "El resto entregó la carta " + s;
+                }
+                else
+                    throw new Exception("EL resto se quedó sin cartas");
             }
             catch(Exception e)
             {

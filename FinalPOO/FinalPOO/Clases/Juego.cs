@@ -208,10 +208,7 @@ namespace FinalPOO.Clases
         }    
         #endregion
 
-        #region Metodos para jugar el juego
-        
-        //public 
-
+        #region Metodos para jugar el juego       
         public List<string> Iniciar_juego()
         {
             try
@@ -222,15 +219,16 @@ namespace FinalPOO.Clases
                 l_cartas_jugadas.Add(resto.L_cartas_sobrantes.ElementAt(0));
                 resto.L_cartas_sobrantes.RemoveAt(0);
                 jugadas.Add("Cartas despues de sacar la primera carta:" + resto.L_cartas_sobrantes.Count);
-                jugadas.Add("INICIO DEL JUEGO");
+                jugadas.Add("INICIO DEL JUEGO\n");
 
-                
                 int rondas = 1;
+                /*
+                
                 jugadas.Add("Ronda " + rondas);
                 for (int i = 0; i < l_jugadores.Count; i++)
                 {
                     jugadas.Add(Mostrar_ultima_carta());
-                    jugadas.Add("Es el turno de " + l_jugadores.ElementAt(i).Nickname);
+                    jugadas.Add("\nEs el turno de " + l_jugadores.ElementAt(i).Nickname);
                     jugadas.Add(Mostrar_baraja_jugador(i));
                   
                     bool jugo_carta = false;
@@ -301,20 +299,21 @@ namespace FinalPOO.Clases
                 }
                 jugadas.Add(Mostrar_ultima_carta());
 
-                jugadas.Add("Cartas resto al final:" + resto.L_cartas_sobrantes.Count);
+                jugadas.Add("\nCartas resto al final:" + resto.L_cartas_sobrantes.Count);
+                */
 
                 //Buscar la forma de que el do while funcione bien 
                 //Crear un metodo que prepare el juego, hacer un do while en el ppal, y que solo se ejecute una ronda en cada iteracion, ReadKey que pregunte si quiere ver la prox ronda, o salir 
 
-                /*
+                
                 do
                 {
-                    int rondas = 1;
-                    jugadas.Add("Ronda " + rondas);
+                    //int rondas = 1;
+                    jugadas.Add("\nRonda " + rondas);
                     for (int i = 0; i < l_jugadores.Count; i++)
                     {
                         jugadas.Add(Mostrar_ultima_carta());
-                        jugadas.Add("Es el turno de " + l_jugadores.ElementAt(i).Nickname);
+                        jugadas.Add("\nEs el turno de " + l_jugadores.ElementAt(i).Nickname);
                         jugadas.Add(Mostrar_baraja_jugador(i));
 
                         bool jugo_carta = false;
@@ -379,18 +378,30 @@ namespace FinalPOO.Clases
 
                         if (jugo_carta == false)
                         {
-                            jugadas.Add(resto.Entregar_carta(l_jugadores.ElementAt(i).Baraja, 0));
+                            if(Resto.L_cartas_sobrantes.Count == 0)
+                            {
+                                Rellenar_resto();
+                            }
+                            else
+                            {
+                                jugadas.Add(resto.Entregar_carta(l_jugadores.ElementAt(i).Baraja, 0));
+                            }                       
                         }
                         jugadas.Add(Mostrar_baraja_jugador(i));
+                        if (l_jugadores.ElementAt(0).Baraja.Count == 0 || l_jugadores.ElementAt(1).Baraja.Count == 0)
+                        {
+                            jugador_gano = true;
+                            jugadas.Add("El jugador " + l_jugadores.ElementAt(i).Nickname + " ganó");
+                            break;
+                        }
                     }
                     jugadas.Add(Mostrar_ultima_carta());
 
-                    if (rondas == 3)
-                        jugador_gano = true;
+                                         
                     rondas++;
 
                 } while (jugador_gano == false);
-                */
+                
 
                 return jugadas;
             }
@@ -400,7 +411,7 @@ namespace FinalPOO.Clases
             }        
         }
 
-        public string Mostrar_ultima_carta()
+        private string Mostrar_ultima_carta()
         {
             try
             {
@@ -425,7 +436,7 @@ namespace FinalPOO.Clases
                 throw new Exception("Ocurrió un error en el metodo Mostrar_ultima_carta " + e);
             }         
         }
-        public string Mostrar_baraja_jugador(int ind)
+        private string Mostrar_baraja_jugador(int ind)
         {
             try
             {
@@ -446,6 +457,35 @@ namespace FinalPOO.Clases
                 throw new Exception("Ocurrió un error en el metodo Mostrar_baraja_jugador " + e);
             }         
         }    
+        
+        private void Rellenar_resto()
+        {
+            try
+            {
+                cJuego c_temp = l_cartas_jugadas.Last();
+                l_cartas_jugadas.RemoveAt(l_cartas_jugadas.Count - 1);
+
+                resto.L_cartas_sobrantes = l_cartas_jugadas;
+                l_cartas_jugadas = new List<cJuego>();
+                l_cartas_jugadas.Add(c_temp);
+
+                Random r = new Random();
+                for (int i = 0; i < l_cartas_jugadas.Count; i++)
+                {
+                    int j = r.Next(0, i);
+                    cJuego temp = l_cartas_jugadas[j];
+                    l_cartas_jugadas[j] = l_cartas_jugadas[i];
+                    l_cartas_jugadas[i] = temp;
+                }
+
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Ocurrió un error en el metodo Rellenar_resto() " + e);
+            }
+        }
+        
+        
         #endregion  
     }
 }

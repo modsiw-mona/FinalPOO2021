@@ -49,7 +49,7 @@ namespace FinalPOO
                     Console.WriteLine(c.Id_carta);
                 }*/
 
-                Console.WriteLine( juego1.Resto.L_cartas_sobrantes.Count());
+                //Console.WriteLine( juego1.Resto.L_cartas_sobrantes.Count());
                 foreach(string s in juego1.Iniciar_juego())
                 {
                     Console.WriteLine(s);
