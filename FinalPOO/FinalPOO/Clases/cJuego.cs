@@ -9,8 +9,6 @@ namespace FinalPOO.Clases
         public cJuego(string id_carta) : base(id_carta)
         {
 
-        }
-
-        
+        }      
     }
 }

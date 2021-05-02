@@ -31,7 +31,6 @@ namespace FinalPOO.Clases
             {
                 if (l_cartas_sobrantes.Count != 0)
                 {
-                    //cJuego c_temp = l_cartas_sobrantes.ElementAt(0);
                     string s = l_cartas_sobrantes.ElementAt(indice).Id_carta;
                     destino.Add(L_cartas_sobrantes.ElementAt(indice));
                     L_cartas_sobrantes.RemoveAt(indice);

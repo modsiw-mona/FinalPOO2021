@@ -12,16 +12,15 @@ namespace FinalPOO.Clases
         #region Atributos
         private string nickname;
         private List<cJuego> baraja;
-        private byte apuesta_inicial;
-        private byte puntos;
+        //private byte apuesta_inicial;
+        private ushort puntos;
         #endregion
 
         #region Constructor
-        public Jugador(string nickname, byte apuesta_inicial, byte puntos)
+        public Jugador(string nickname, ushort puntos)
         {
             Nickname = nickname;
             baraja = new List<cJuego>();
-            Apuesta_inicial = apuesta_inicial;
             Puntos = puntos;
         }
         #endregion
@@ -29,7 +28,7 @@ namespace FinalPOO.Clases
         #region Accesores
         public string Nickname
         {
-            get => nickname;
+            get => nickname.ToUpper();
             set
             {
                 if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || value.Length < 3)
@@ -37,19 +36,8 @@ namespace FinalPOO.Clases
                 else
                     nickname = value;
             }
-        }
-        public byte Apuesta_inicial
-        {
-            get => apuesta_inicial;
-            set
-            {
-                if (value <= 0)
-                    throw new Exception("La apuesta inicial debe ser mayor a cero");
-                else
-                    apuesta_inicial = value;
-            }
-        }
-        public byte Puntos
+        }     
+        public ushort Puntos
         {
             get => puntos;
             set
@@ -73,12 +61,7 @@ namespace FinalPOO.Clases
         }
         #endregion
 
-        #region Metodos
-        /*      
-        public cJuego Recoger_carta(Resto resto)
-        {
-
-        }*/
+        #region Metodos     
 
         public string Entregar_carta(List<cJuego> destino, int indice)
         {
@@ -87,7 +70,7 @@ namespace FinalPOO.Clases
                 cJuego c_temp = baraja.ElementAt(indice);
                 destino.Add(c_temp);
                 baraja.RemoveAt(indice);          
-                return "El jugador " + nickname + " tiró la carta " + c_temp.Id_carta;
+                return "El jugador " + Nickname + " tiró la carta " + c_temp.Id_carta;
             }
             catch(Exception e)
             {

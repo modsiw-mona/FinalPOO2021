@@ -7,26 +7,27 @@ namespace FinalPOO.Clases
     abstract class Bonus : Carta
     {
         #region Atributos
-        private string descripcion;
+        protected byte cant_cartas;
         #endregion
 
         #region Constructor
-        public Bonus(string id_carta, string descripcion) : base(id_carta)
+        public Bonus(string id_carta, byte cant_cartas) : base(id_carta)
         {
-            Descripcion = descripcion;
+            Cant_cartas = cant_cartas;
         }
         #endregion
 
         #region Accesores
-        public string Descripcion
+        
+        public byte Cant_cartas 
         {
-            get => descripcion;
+            get => cant_cartas; 
             set
             {
-                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || value.Length < 10)
-                    throw new Exception("La descripcion no puede estar vacia, ser nula, ni menor a diez");
+                if (value <= 0)
+                    throw new Exception("La cantidad de cartas a recoger/tirar de las cartas Bonus no puede ser menor o igual a 0");
                 else
-                    descripcion = value;
+                    cant_cartas = value;
             }
         }
         #endregion
