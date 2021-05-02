@@ -16,9 +16,9 @@ namespace FinalPOO.Clases
             {
                 string s = "";
                 if (j.Baraja.Count == 0)
-                    s = "El jugador " + j.Nickname + " se había quedado sin cartas, pero como acabó con una indicadora tiene que recoger " + cant_cartas + " cartas";
+                    s = "CARTA CASTIGO: El jugador " + j.Nickname + " se había quedado sin cartas, pero como acabó con una indicadora tiene que recoger " + cant_cartas + " carta(s)";
                 else
-                    s = "El jugador " + j.Nickname + " recogió " + cant_cartas + " cartas";
+                    s = "CARTA CASTIGO: El jugador " + j.Nickname + " recogió " + cant_cartas + " carta(s)";
 
                 for (int i = 0; i<cant_cartas; i++)
                 {

@@ -21,7 +21,7 @@ namespace FinalPOO.Clases
                     {
                         j.Entregar_carta(r.L_cartas_sobrantes, 0);
                     }
-                    return "El jugador " + j.Nickname + " tiró todas las cartas";
+                    return "CARTA PREMIO: El jugador " + j.Nickname + " tiró todas las cartas";
                 }
                 else
                 {
@@ -29,7 +29,7 @@ namespace FinalPOO.Clases
                     {
                         j.Entregar_carta(r.L_cartas_sobrantes, 0);
                     }
-                    return "El jugador " + j.Nickname + " tiró " + cant_cartas + " cartas";
+                    return "CARTA PREMIO: El jugador " + j.Nickname + " tiró " + cant_cartas + " carta(s)";
                 }               
             }
             catch(Exception e)

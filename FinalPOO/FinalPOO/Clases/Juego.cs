@@ -80,6 +80,8 @@ namespace FinalPOO.Clases
                 
                 Estandar e_temp;
                 Indicadora i_temp;
+                Premio p_temp;
+                Castigo c_temp;
                 byte contador = 0;
 
                 linea = archivo.ReadLine();
@@ -91,10 +93,20 @@ namespace FinalPOO.Clases
                         e_temp = new Estandar(info_archivo[0], char.Parse(info_archivo[1]), char.Parse(info_archivo[2]));
                         l_cartas_temp.Add(e_temp);
                     }
-                    else
+                    else if(contador < 100)
                     {
                         i_temp = new Indicadora(info_archivo[0], char.Parse(info_archivo[1]));
                         l_cartas_temp.Add(i_temp);
+                    }
+                    else if(contador < 112)
+                    {
+                        p_temp = new Premio(info_archivo[0], byte.Parse(info_archivo[1]));
+                        l_cartas_temp.Add(p_temp);
+                    }
+                    else
+                    {
+                        c_temp = new Castigo(info_archivo[0], byte.Parse(info_archivo[1]));
+                        l_cartas_temp.Add(c_temp);
                     }
                     contador++;
                     linea = archivo.ReadLine();
@@ -256,8 +268,15 @@ namespace FinalPOO.Clases
                                 {
                                     s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
 
-                                    //Mirar_bonus().
-
+                                    Bonus b = Mirar_bonus();
+                                    if (b is Premio)
+                                    {
+                                        s_jugada += "\n" + (b as Premio).Tirar_cartas(l_jugadores.ElementAt(i), resto);
+                                    }
+                                    else
+                                    {
+                                        s_jugada += "\n" + (b as Castigo).Recoger_cartas(l_jugadores.ElementAt(i), resto);
+                                    }
                                     jugo_carta = true;
                                     break;
                                 }
@@ -282,9 +301,18 @@ namespace FinalPOO.Clases
                             {
                                 if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero))
                                 {
-                                    s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+                                    s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);                                  
+
+                                    Bonus b = Mirar_bonus();
+                                    if (b is Premio)
+                                    {
+                                        s_jugada += "\n" + (b as Premio).Tirar_cartas(l_jugadores.ElementAt(i), resto);
+                                    }
+                                    else
+                                    {
+                                        s_jugada += "\n" + (b as Castigo).Recoger_cartas(l_jugadores.ElementAt(i), resto);
+                                    }
                                     jugo_carta = true;
-                                    //YA VENGO-----------------------------------------
                                     break;
                                 }
                             }
