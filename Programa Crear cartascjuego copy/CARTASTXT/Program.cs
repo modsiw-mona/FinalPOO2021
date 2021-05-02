@@ -9,7 +9,7 @@ namespace cartas
 
         static void Main(string[] args)
         {
-            StreamWriter sw = new StreamWriter("/Users/sof/Desktop/CartasArregladas.txt");
+            StreamWriter sw = new StreamWriter("/Users/sof/Desktop/Cartas2.txt");
 
             for (int i = 0; i < 4; i++) //4 colores
             {
@@ -40,7 +40,7 @@ namespace cartas
 
             for (int i = 0; i < 4; i++) //4 colores
             {
-                for (int j = 0; j < 3; j++) //3 veces/ tandas
+                for (int j = 0; j < 5; j++) //3 veces/ tandas
                 {
                     if (i == 0) //rojo red
                     {
@@ -59,15 +59,6 @@ namespace cartas
                         sw.WriteLine("B" + "-" + (j + 1) + "|" + 'B');
                     }
                 }
-            }
-
-            for (int i = 0; i < 10; i++) //10 numeros
-            {
-                for (int j = 0; j < 3; j++) //3 tandas
-                {
-                    sw.WriteLine(i + "" + "-" + (j + 1) + "|" + char.GetNumericValue(char.Parse(i + "")));
-                }
-
             }
             sw.Close();
         }
