@@ -9,7 +9,7 @@ namespace cartas
 
         static void Main(string[] args)
         {
-            StreamWriter sw = new StreamWriter("/Users/sof/Desktop/Cartas2.txt");
+            StreamWriter sw = new StreamWriter("/Users/sof/Documents/GitHub/FinalPOO2021/Cartas2.txt");
 
             for (int i = 0; i < 4; i++) //4 colores
             {
@@ -57,6 +57,45 @@ namespace cartas
                     else if (i == 3) //azul //blue
                     {
                         sw.WriteLine("B" + "-" + (j + 1) + "|" + 'B');
+                    }
+                }
+            }
+
+            for (int i = 0; i < 2; i++) //2 tipos de cartas premio
+            {
+                for (int j = 0; j < 6; j++) //se repiten 6 veces
+                {
+                    if (i == 0) //premio 1 (bota una carta)
+                    {
+                        sw.WriteLine("Pre" + (i + 1) + "-" + (j + 1) + "|" + 1);
+
+                    }
+                    else if (i == 1) //premio 2 (bota dos cartas)
+                    {
+                        sw.WriteLine("Pre" + (i + 1) + "-" + (j + 1) + "|" + 2);
+                    }
+                }
+            }
+
+            for (int i = 0; i < 4; i++) //4 tipos de carta castigo
+            {
+                for (int j = 0; j < 3; j++) //3 veces
+                {
+                    if (i == 0) //castigo 1
+                    {
+                        sw.WriteLine("Cast" + (i + 1) + "-" + (j + 1) + "|" + 1);
+                    }
+                    else if (i == 1) //verde green 
+                    {
+                        sw.WriteLine("Cast" + (i + 1) + "-" + (j + 1) + "|" + 2);
+                    }
+                    else if (i == 2) //amarillo yellow
+                    {
+                        sw.WriteLine("Cast" + (i + 1) + "-" + (j + 1) + "|" + 3);
+                    }
+                    else if (i == 3) //azul //blue
+                    {
+                        sw.WriteLine("Cast" + (i + 1) + "-" + (j + 1) + "|" + 4);
                     }
                 }
             }
