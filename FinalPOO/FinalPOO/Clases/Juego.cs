@@ -219,7 +219,6 @@ namespace FinalPOO.Clases
                 jugadas.Add("INICIO DEL JUEGO\n");
                 int rondas = 1;
                 #endregion
-
                 do
                 {
                     string s_jugada = "";
@@ -256,6 +255,9 @@ namespace FinalPOO.Clases
                                     (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Numero))
                                 {
                                     s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+
+                                    //Mirar_bonus().
+
                                     jugo_carta = true;
                                     break;
                                 }
@@ -401,6 +403,40 @@ namespace FinalPOO.Clases
                 throw new Exception("Ocurrió un error en el metodo Rellenar_resto() " + e);
             }
         }       
+        
+        //Metodo que ocurre si alguien tira una carta indicadora
+        private Bonus Mirar_bonus()
+        {
+            try
+            {
+                if (l_bonus.Count <= 0)
+                    throw new Exception("La lista de cartas bonus está vacía");
+                else
+                {
+                    if(l_bonus.ElementAt(0) is Premio)
+                    {
+                        Premio p_temp;
+                        p_temp = l_bonus.ElementAt(0) as Premio;
+                        l_bonus.RemoveAt(0);
+                        l_bonus.Add(p_temp);
+                        return p_temp;
+                    }
+                    else
+                    {
+                        Castigo c_temp;
+                        c_temp = l_bonus.ElementAt(0) as Castigo;
+                        l_bonus.RemoveAt(0);
+                        l_bonus.Add(c_temp);
+                        return c_temp;
+                    }
+                }
+
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Ocurrió un error en el metodo Mirar_bonus " + e);
+            }
+        }
         #endregion  
     }
 }
