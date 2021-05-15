@@ -10,14 +10,24 @@ using System.Windows.Forms;
 
 namespace FormJuego
 {
-    public partial class Form1 : Form
+    public partial class FormPartida : Form
     {
-        public Form1()
+        public FormPartida()
         {
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormPartida_Load(object sender, EventArgs e)
         {
 
         }
