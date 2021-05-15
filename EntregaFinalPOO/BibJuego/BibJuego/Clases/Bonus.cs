@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace FinalPOO.Clases
+namespace BibJuego.Clases
 {
     abstract class Bonus : Carta
     {
@@ -18,9 +20,9 @@ namespace FinalPOO.Clases
         #endregion
 
         #region Accesores     
-        public byte Cant_cartas 
+        public byte Cant_cartas
         {
-            get => cant_cartas; 
+            get => cant_cartas;
             set
             {
                 if (value <= 0)

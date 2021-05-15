@@ -1,0 +1,6 @@
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\EntregaFinalPOO\BibJuego\BibJuego\bin\Debug\BibJuego.dll
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\EntregaFinalPOO\BibJuego\BibJuego\bin\Debug\BibJuego.pdb
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\EntregaFinalPOO\BibJuego\BibJuego\obj\Debug\BibJuego.csprojAssemblyReference.cache
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\EntregaFinalPOO\BibJuego\BibJuego\obj\Debug\BibJuego.csproj.CoreCompileInputs.cache
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\EntregaFinalPOO\BibJuego\BibJuego\obj\Debug\BibJuego.dll
+C:\Users\gabri\Documents\GitHub\FinalPOO2021\EntregaFinalPOO\BibJuego\BibJuego\obj\Debug\BibJuego.pdb
