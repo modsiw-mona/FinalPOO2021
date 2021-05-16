@@ -70,7 +70,7 @@ namespace FinalPOO.Clases
                 cJuego c_temp = baraja.ElementAt(indice);
                 destino.Add(c_temp);
                 baraja.RemoveAt(indice);          
-                return "El jugador " + Nickname + " tiró la carta " + c_temp.Id_carta;
+                return "El jugador " + Nickname + " tiró la carta " + c_temp;
             }
             catch(Exception e)
             {

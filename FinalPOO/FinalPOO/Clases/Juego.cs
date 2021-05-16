@@ -348,6 +348,7 @@ namespace FinalPOO.Clases
                     #endregion
                     s_jugada += "\n" + Mostrar_ultima_carta();
                     jugadas.Add(s_jugada);
+                    
                     rondas++;
 
                 } while (jugador_gano == false);
@@ -358,6 +359,173 @@ namespace FinalPOO.Clases
             {
                 throw new Exception("\nHa ocurrido un error en el metodo Iniciar_juego de la clase Juego " + e);
             }        
+        }
+
+        public List<Ronda> Iniciar_juego2()
+        {
+            try
+            {
+                #region Inicio del juego
+
+                List<Ronda> l_rondas = new List<Ronda>();
+                Ronda ronda_temp;
+                Jugada jugada_temp;
+
+                bool jugador_gano = false;
+                List<string> jugadas = new List<string>();
+                l_cartas_jugadas.Add(resto.L_cartas_sobrantes.ElementAt(0));
+                resto.L_cartas_sobrantes.RemoveAt(0);
+                //jugadas.Add("INICIO DEL JUEGO\n");
+                ushort rondas = 1;
+                #endregion
+                do
+                {
+                    //string s_jugada = "";
+                    //jugadas.Add("\nRONDA " + rondas + "\n");
+
+                    ronda_temp = new Ronda(rondas);
+
+                    #region Recorre la lista de jugadores
+                    for (int i = 0; i < l_jugadores.Count; i++)
+                    {
+                        //s_jugada += "\n" + Mostrar_ultima_carta();
+                        //s_jugada += "\n\nEs el turno de " + l_jugadores.ElementAt(i).Nickname;
+                        //s_jugada += "\n" + Mostrar_baraja_jugador(i);
+
+                        jugada_temp = new Jugada(l_cartas_jugadas.Last(), l_jugadores.ElementAt(i));
+                        jugada_temp.Movimiento += Mostrar_baraja_jugador(i) + "\n";
+
+                        bool jugo_carta = false;
+
+                        #region Recorre la baraja del jugador a ver si puede jugar la carta
+                        for (int j = 0; j < l_jugadores.ElementAt(i).Baraja.Count; j++)
+                        {
+                            #region Si la carta es Estandar y la ultima carta jugada es Estandar
+                            if (l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Estandar && l_cartas_jugadas.Last() is Estandar)
+                            {
+                                if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Color.Equals((l_cartas_jugadas.Last() as Estandar).Color) ||
+                                    (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Numero.Equals((l_cartas_jugadas.Last() as Estandar).Numero))
+                                {
+                                    //s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+                                    jugada_temp.Movimiento += l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+                                    jugo_carta = true;
+                                    break;
+                                }
+                            }
+                            #endregion
+
+                            #region Si la carta es indicadora y la ultima carta jugada es Estandar
+                            else if (l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Indicadora && l_cartas_jugadas.Last() is Estandar)
+                            {
+                                if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Color) ||
+                                    (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Numero))
+                                {
+                                    //s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+                                    jugada_temp.Movimiento += l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+
+                                    Bonus b = Mirar_bonus();
+                                    if (b is Premio)
+                                    {
+                                        //s_jugada += "\n" + (b as Premio).Tirar_cartas(l_jugadores.ElementAt(i), resto);
+                                        jugada_temp.Movimiento += "\n" + (b as Premio).Tirar_cartas(l_jugadores.ElementAt(i), resto);
+                                    }
+                                    else
+                                    {
+                                        //s_jugada += "\n" + (b as Castigo).Recoger_cartas(l_jugadores.ElementAt(i), resto);
+                                        jugada_temp.Movimiento += "\n" + (b as Castigo).Recoger_cartas(l_jugadores.ElementAt(i), resto);
+                                    }
+                                    jugo_carta = true;
+                                    break;
+                                }
+                            }
+                            #endregion
+
+                            #region Si la carta es Estandar y la ultima carta jugada es Indicadora
+                            else if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Estandar && l_cartas_jugadas.Last() is Indicadora))
+                            {
+                                if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Color.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero) ||
+                                    (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Numero.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero))
+                                {
+                                    //s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+                                    jugada_temp.Movimiento += l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+                                    jugo_carta = true;
+                                    break;
+                                }
+                            }
+                            #endregion
+
+                            #region Si la carta es Indicadora y la ultima carta jugada es Indicadora
+                            else if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) is Indicadora && l_cartas_jugadas.Last() is Indicadora))
+                            {
+                                if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero))
+                                {
+                                    //s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+                                    jugada_temp.Movimiento += l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+
+                                    Bonus b = Mirar_bonus();
+                                    if (b is Premio)
+                                    {
+                                        //s_jugada += "\n" + (b as Premio).Tirar_cartas(l_jugadores.ElementAt(i), resto);
+                                        jugada_temp.Movimiento += "\n" + (b as Premio).Tirar_cartas(l_jugadores.ElementAt(i), resto);
+                                    }
+                                    else
+                                    {
+                                        //s_jugada += "\n" + (b as Castigo).Recoger_cartas(l_jugadores.ElementAt(i), resto);
+                                        jugada_temp.Movimiento += "\n" + (b as Castigo).Recoger_cartas(l_jugadores.ElementAt(i), resto);
+                                    }
+                                    jugo_carta = true;
+                                    break;
+                                }
+                            }
+                            #endregion
+                        }
+                        #endregion
+
+                        #region Si no pudo jugar ninguna carta
+                        if (jugo_carta == false)
+                        {
+                            if (Resto.L_cartas_sobrantes.Count == 0)
+                            {
+                                Rellenar_resto();
+                            }
+                            else
+                            {
+                                //s_jugada += "\n" + resto.Entregar_carta(l_jugadores.ElementAt(i).Baraja, 0);
+                                jugada_temp.Movimiento += resto.Entregar_carta(l_jugadores.ElementAt(i).Baraja, 0);
+                            }
+                        }
+                        #endregion
+
+                        //s_jugada += "\n" + Mostrar_baraja_jugador(i);
+                        jugada_temp.Movimiento += "\n" +  Mostrar_baraja_jugador(i);
+
+                        #region Si uno de los jugadores gana
+                        if (l_jugadores.ElementAt(i).Baraja.Count == 0)
+                        {                        
+                            //s_jugada += "\nEl jugador " + l_jugadores.ElementAt(i).Nickname + " ganó";
+                            jugada_temp.Movimiento += "\nEl jugador " + l_jugadores.ElementAt(i).Nickname + " ganó";
+                            jugador_gano = true;
+                            ronda_temp.L_jugadas.Add(jugada_temp);
+                            break;
+                        }
+                        #endregion  
+                        ronda_temp.L_jugadas.Add(jugada_temp);
+                    }
+                    #endregion
+                    //s_jugada += "\n" + Mostrar_ultima_carta();
+                    //jugadas.Add(s_jugada);
+                    l_rondas.Add(ronda_temp);
+                    rondas++;
+
+                } while (jugador_gano == false);
+
+                //return jugadas;
+                return l_rondas;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("\nHa ocurrido un error en el metodo Iniciar_juego de la clase Juego " + e);
+            }
         }
         private string Mostrar_ultima_carta()
         {
@@ -393,7 +561,7 @@ namespace FinalPOO.Clases
                     string s_temp = "";
                     foreach (cJuego c in l_jugadores.ElementAt(ind).Baraja)
                     {
-                        s_temp += c.Id_carta + "  ";
+                        s_temp += c + "  ";
                     }
                     return s_temp;
                 }

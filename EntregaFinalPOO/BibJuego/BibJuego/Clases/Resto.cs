@@ -36,6 +36,8 @@ namespace BibJuego.Clases
                     L_cartas_sobrantes.RemoveAt(indice);
                     return "El resto entregó la carta " + s;
                 }
+                else if (destino.Count == 10)
+                    return "El jugador ya tiene 10 cartas, no puede recoger más";
                 else
                     throw new Exception("EL resto se quedó sin cartas");
             }

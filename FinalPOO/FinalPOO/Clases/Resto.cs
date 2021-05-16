@@ -31,7 +31,7 @@ namespace FinalPOO.Clases
             {
                 if (l_cartas_sobrantes.Count != 0)
                 {
-                    string s = l_cartas_sobrantes.ElementAt(indice).Id_carta;
+                    cJuego s = l_cartas_sobrantes.ElementAt(indice);
                     destino.Add(L_cartas_sobrantes.ElementAt(indice));
                     L_cartas_sobrantes.RemoveAt(indice);
                     return "El resto entregó la carta " + s;

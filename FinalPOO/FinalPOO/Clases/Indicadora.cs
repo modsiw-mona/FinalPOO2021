@@ -30,6 +30,10 @@ namespace FinalPOO.Clases
             }
         }
         #endregion
-        
+
+        public override string ToString()
+        {
+            return "[" + color_o_numero + " ]";
+        }
     }
 }
