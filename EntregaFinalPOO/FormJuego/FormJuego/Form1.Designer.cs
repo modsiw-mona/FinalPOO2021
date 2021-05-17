@@ -32,6 +32,7 @@ namespace FormJuego
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.picAvatars = new System.Windows.Forms.PictureBox();
             this.btn_agregarJugador = new System.Windows.Forms.Button();
             this.cb_seleccionarAvatar = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,9 +52,9 @@ namespace FormJuego
             this.button1 = new System.Windows.Forms.Button();
             this.class1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.class1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.picAvatars = new System.Windows.Forms.PictureBox();
             this.imageListAvatars = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatars)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.juegoBindingSource)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -61,7 +62,6 @@ namespace FormJuego
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.class1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.class1BindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAvatars)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -79,6 +79,15 @@ namespace FormJuego
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Crear jugador";
+            // 
+            // picAvatars
+            // 
+            this.picAvatars.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picAvatars.Location = new System.Drawing.Point(33, 190);
+            this.picAvatars.Name = "picAvatars";
+            this.picAvatars.Size = new System.Drawing.Size(150, 150);
+            this.picAvatars.TabIndex = 7;
+            this.picAvatars.TabStop = false;
             // 
             // btn_agregarJugador
             // 
@@ -241,6 +250,7 @@ namespace FormJuego
             this.button2.Size = new System.Drawing.Size(53, 53);
             this.button2.TabIndex = 7;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -254,6 +264,7 @@ namespace FormJuego
             this.button1.Size = new System.Drawing.Size(53, 53);
             this.button1.TabIndex = 6;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // class1BindingSource
             // 
@@ -262,15 +273,6 @@ namespace FormJuego
             // class1BindingSource1
             // 
             this.class1BindingSource1.DataSource = typeof(BibJuego.Class1);
-            // 
-            // picAvatars
-            // 
-            this.picAvatars.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picAvatars.Location = new System.Drawing.Point(33, 190);
-            this.picAvatars.Name = "picAvatars";
-            this.picAvatars.Size = new System.Drawing.Size(150, 150);
-            this.picAvatars.TabIndex = 7;
-            this.picAvatars.TabStop = false;
             // 
             // imageListAvatars
             // 
@@ -296,10 +298,13 @@ namespace FormJuego
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
             this.Text = "Uno";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatars)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.juegoBindingSource)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -307,7 +312,6 @@ namespace FormJuego
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.class1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.class1BindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAvatars)).EndInit();
             this.ResumeLayout(false);
 
         }

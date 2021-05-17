@@ -237,11 +237,13 @@ namespace FormJuego
             // 
             // btn_proxJugada
             // 
-            this.btn_proxJugada.Location = new System.Drawing.Point(713, 214);
+            this.btn_proxJugada.Font = new System.Drawing.Font("Verdana", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_proxJugada.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_proxJugada.Location = new System.Drawing.Point(683, 205);
             this.btn_proxJugada.Name = "btn_proxJugada";
-            this.btn_proxJugada.Size = new System.Drawing.Size(75, 23);
+            this.btn_proxJugada.Size = new System.Drawing.Size(105, 46);
             this.btn_proxJugada.TabIndex = 15;
-            this.btn_proxJugada.Text = "button1";
+            this.btn_proxJugada.Text = "Siguiente ronda";
             this.btn_proxJugada.UseVisualStyleBackColor = true;
             this.btn_proxJugada.Click += new System.EventHandler(this.btn_proxJugada_Click);
             // 

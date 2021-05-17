@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BibJuego.Clases;
+using System.IO;
 
 namespace FormJuego
 {
@@ -49,36 +50,51 @@ namespace FormJuego
             l_rondas = juego.Iniciar_juego();
             
         }
+        
 
         private void btn_proxJugada_Click(object sender, EventArgs e)
         {
             try
             {
-                if (num <= l_rondas.Count)
+                if (num  <= l_rondas.Count)
                 {
-                    lbl_ronda.Text = "Ronda: " + num.ToString();
+                    lbl_ronda.Text = "Ronda " + num;
                     l_reales.Add(l_rondas[num - 1]);
-                    string s = "Ronda " + num;
+                    string s = Environment.NewLine + "--------RONDA: " + num.ToString() + "--------" + Environment.NewLine;                  
 
-                    foreach(Jugada j in l_reales[num - 1].L_jugadas)
+                    foreach (Jugada j in l_reales[num - 1].L_jugadas)
                     {
                         s += Environment.NewLine + j + Environment.NewLine;
-                        tb_ultimaCarta.Text = j.Ultima_carta.ToString();                     
+                        tb_ultimaCarta.Text = j.Ultima_carta.ToString();
+
+                        lbl_baraja1.Text = l_reales[num - 1].Barajas[0];
+                        lbl_baraja2.Text = l_reales[num - 1].Barajas[1];
+                        lbl_baraja3.Text = l_reales[num - 1].Barajas[2];
+                        lbl_baraja4.Text = l_reales[num - 1].Barajas[3];
                     }
                     tb_jugadas.AppendText(s);
-
-                    lbl_baraja1.Text = l_reales[num - 1].Barajas[0];
-                    lbl_baraja2.Text = l_reales[num - 1].Barajas[1];
-                    lbl_baraja3.Text = l_reales[num - 1].Barajas[2];
-                    lbl_baraja4.Text = l_reales[num - 1].Barajas[3];
-
-                    //if()
-                   
+                    
+                    if(num == l_rondas.Count)
+                    {                     
+                        for(int i = 0; i < l_reales[l_reales.Count - 1].L_jugadas.Count; i++)
+                        {
+                            if (l_reales[l_reales.Count - 1].L_jugadas.Count == i+1)
+                            {
+                                Editar_archivo(Form1.l_elegidos.ElementAt(i).Nickname, Form1.l_elegidos.ElementAt(i).Puntos, Form1.l_elegidos.ElementAt(i).Avatar);
+                                MessageBox.Show("El jugador " + Form1.l_elegidos.ElementAt(i).Nickname + " fue el ganador");
+                                break;
+                            }
+                        }                     
+                        this.Close();
+                        Form1 f1 = new Form1();
+                        f1.Show();
+                        Form1.l_elegidos.RemoveRange(0,4);
+                        
+                    }
                     num++;
                 }
                 else
                 {
-                    //MessageBox.Show("Hubo un ganador");
                     throw new Exception("Ya hubo un ganador");
                 }                   
             }
@@ -89,6 +105,40 @@ namespace FormJuego
         }
 
         #region Otros metodos
+        
+        private void Editar_archivo(string nickname, ushort puntos,ushort id_avatar)
+        {
+            try
+            {
+                string[] lineas = File.ReadAllLines("C:\\Users\\gabri\\Downloads\\players.txt");
+                string[] split;
+                File.Delete("C:\\Users\\gabri\\Downloads\\players.txt");
+                using (StreamWriter sw = File.AppendText("C:\\Users\\gabri\\Downloads\\players.txt"))
+                {
+                    foreach (string linea in lineas)
+                    {
+                        split = linea.Split('|');
+                        if (split[0].ToLower().Equals(nickname.ToLower()) && ushort.Parse(split[1]) == puntos && ushort.Parse(split[2]) == id_avatar)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            sw.WriteLine(linea);
+                        }
+                    }
+                }
+                string nuevos = nickname + "|" + (puntos+100) + "|" + id_avatar;
+                File.AppendAllText("C:\\Users\\gabri\\Downloads\\players.txt", nuevos);
+                
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Ocurrió un error al editar el archivo de jugadores " + e);
+            }
+                      
+        }
+
         private void pictureBox3_Click(object sender, EventArgs e)
         {
         }

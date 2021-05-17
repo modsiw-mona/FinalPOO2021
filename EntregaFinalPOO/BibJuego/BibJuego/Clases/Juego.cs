@@ -341,22 +341,23 @@ namespace BibJuego.Clases
                         #region Si uno de los jugadores gana
                         if (l_jugadores.ElementAt(i).Baraja.Count == 0)
                         {
-                            jugada_temp.Movimiento += Environment.NewLine + "El jugador " + l_jugadores.ElementAt(i).Nickname + " ganó";
+                            //l_jugadores.ElementAt(i).Puntos += 100;
+                            jugada_temp.Movimiento += Environment.NewLine + "El jugador " + l_jugadores.ElementAt(i).Nickname
+                                + " ganó 100 puntos." + Environment.NewLine;
+
                             jugador_gano = true;
-                            ronda_temp.L_jugadas.Add(jugada_temp);
-                            l_jugadores.ElementAt(i).Puntos += 100;
+                            ronda_temp.L_jugadas.Add(jugada_temp);                          
                             break;
                         }
                         #endregion  
-                        ronda_temp.L_jugadas.Add(jugada_temp);
-
-                        ronda_temp.Barajas.Add(Mostrar_baraja_jugador(0));
-                        ronda_temp.Barajas.Add(Mostrar_baraja_jugador(1));
-                        ronda_temp.Barajas.Add(Mostrar_baraja_jugador(2));
-                        ronda_temp.Barajas.Add(Mostrar_baraja_jugador(3));
+                        ronda_temp.L_jugadas.Add(jugada_temp);                       
                     }
                     #endregion
-                    
+
+                    ronda_temp.Barajas.Add(Mostrar_baraja_jugador(0));
+                    ronda_temp.Barajas.Add(Mostrar_baraja_jugador(1));
+                    ronda_temp.Barajas.Add(Mostrar_baraja_jugador(2));
+                    ronda_temp.Barajas.Add(Mostrar_baraja_jugador(3));
 
                     l_rondas.Add(ronda_temp);
                     rondas++;

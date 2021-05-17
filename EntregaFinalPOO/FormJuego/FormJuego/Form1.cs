@@ -23,9 +23,7 @@ namespace FormJuego
         public static string nick_j2;
         public static string nick_j3;
         public static string nick_j4;
-
-        //public  List<Jugador> L_elegidos { get => l_elegidos; set => l_elegidos = value; }
-
+       
         public Form1()
         {
             InitializeComponent();
@@ -33,14 +31,9 @@ namespace FormJuego
             lb_leaderboard.DataSource = l_jugadores;
             cb_seleccionarAvatar.DataSource = Enum.GetValues(typeof(l_avatars));
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
+    
         #region Metodos de listbox
-        private List<Jugador> Cargar_jugadores(string ruta)
+        public List<Jugador> Cargar_jugadores(string ruta)
         {
             try
             {
@@ -78,9 +71,8 @@ namespace FormJuego
             try
             {
                 Jugador jugador_temp;
-                //string av = cb_seleccionarAvatar.
                 jugador_temp = new Jugador(tb_nickname.Text, 0, (ushort)cb_seleccionarAvatar.SelectedIndex);
-                string elementos = tb_nickname.Text + "|" + 0 + "|" + cb_seleccionarAvatar.SelectedIndex;
+                string elementos = tb_nickname.Text.ToUpper() + "|" + 0 + "|" + cb_seleccionarAvatar.SelectedIndex;
                 l_jugadores.Add(jugador_temp);
 
                 lb_leaderboard.DataSource = null;
@@ -100,6 +92,8 @@ namespace FormJuego
             {
                 if (l_elegidos.Contains((Jugador)lb_leaderboard.SelectedItem))
                     throw new Exception("Ese jugador ya fue seleccionado previamente");
+                else if (l_elegidos.Count == 4)
+                    throw new Exception("Ya fueron ingresados 4 jugadores");
                 else
                 {
                     l_elegidos.Add((Jugador)lb_leaderboard.SelectedItem);
@@ -136,9 +130,55 @@ namespace FormJuego
                 MessageBox.Show("Ocurrió un error en el boton Jugar " + err);
             }
         }
+        //Boton cerrar
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Environment.Exit(1);
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Ocurrió un error al cerrar la aplicación " + err);
+            }
+        }
+
+        //Boton como jugar
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show("COMO JUGAR?" + Environment.NewLine + Environment.NewLine + "Este proyecto es una simulación del juego 'Uno', para comenzar el juego" +
+                    " lo primero que debes hacer es elegir 4 jugadores del leaderboard, despues de esto presiona 'Iniciar partida'." + Environment.NewLine + Environment.NewLine +
+                    "Esto te llevara a una nueva pantalla donde está el tablero, a la izquierda hay una consola que explica a detalle cada movimiento de cada ronda, " +
+                    "a la derecha hay un boton donde puedes pasar a la siguiente ronda" + Environment.NewLine + Environment.NewLine +
+                    "La jugabilidad es practicamente la misma, la unica diferencia es que existen unas cartas especiales que si las tiras " +
+                    "te puede tocar tanto un bonus como un castigo.");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Ocurrió un error al mostrar información de como jugar " + err);
+            }
+        }
+
+        //Boton info
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show("INFORMACION SOBRE LOS CREADORES" + Environment.NewLine + Environment.NewLine + "Esta aplicación fue desarrollada" +
+                    "por Sofia Arango Patiño y Gabriel Cornejo Botero estudiantes de ing de sistemas en la UPB sede Medellín, esta es la entrega" +
+                    "final del curso Programación y diseño orientado a objetos 2021-01." + Environment.NewLine + Environment.NewLine + "Para el desarrollo" +
+                    "de esta aplicación creamos una biblioteca de clases con los conceptos de la orientación a objetos y la conectamos con una " +
+                    "aplicación de windows Forms en la que usamos lectura de archivos y mostramos el juego de la biblioteca de clases por medio " +
+                    "de una interfaz grafica.");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Ocurrió un error al mostrar información sobre los creadores " + err);
+            }
+        }
         #endregion
-
-
 
         private void cb_seleccionarAvatar_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -151,6 +191,10 @@ namespace FormJuego
             {
                 MessageBox.Show("Ocurrió un error en el combo para elegir Avatar " + err);
             }
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
