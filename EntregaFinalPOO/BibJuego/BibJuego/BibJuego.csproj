@@ -48,9 +48,11 @@
     <Compile Include="Clases\Estandar.cs" />
     <Compile Include="Clases\Indicadora.cs" />
     <Compile Include="Clases\Juego.cs" />
+    <Compile Include="Clases\Jugada.cs" />
     <Compile Include="Clases\Jugador.cs" />
     <Compile Include="Clases\Premio.cs" />
     <Compile Include="Clases\Resto.cs" />
+    <Compile Include="Clases\Ronda.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Interfaces\IEntregarCarta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

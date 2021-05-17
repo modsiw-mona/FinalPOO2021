@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibJuego.Clases
 {
-    abstract class cJuego : Carta
+    public abstract class cJuego : Carta
     {
         public cJuego(string id_carta) : base(id_carta)
         {

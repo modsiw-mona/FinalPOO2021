@@ -7,20 +7,22 @@ using BibJuego.Interfaces;
 
 namespace BibJuego.Clases
 {
-    class Jugador : IEntregarCarta
+    public class Jugador : IEntregarCarta
     {
         #region Atributos
         private string nickname;
         private List<cJuego> baraja;
         private ushort puntos;
+        private ushort avatar;
         #endregion
 
         #region Constructor
-        public Jugador(string nickname, ushort puntos)
+        public Jugador(string nickname, ushort puntos, ushort avatar)
         {
             Nickname = nickname;
             baraja = new List<cJuego>();
             Puntos = puntos;
+            Avatar = avatar;
         }
         #endregion
 
@@ -30,8 +32,8 @@ namespace BibJuego.Clases
             get => nickname.ToUpper();
             set
             {
-                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || value.Length < 3)
-                    throw new Exception("El nickname no puede estar vacio, ser nulo, ni menor a tres");
+                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value) || value.Length < 3 || value.Length > 15)
+                    throw new Exception("El nickname no puede estar vacio, ser nulo, menor a tres o mayor a 15 digitos");
                 else
                     nickname = value;
             }
@@ -58,6 +60,8 @@ namespace BibJuego.Clases
                     baraja = value;
             }
         }
+
+        public ushort Avatar { get => avatar; set => avatar = value; }
         #endregion
 
         #region Metodos     
@@ -68,7 +72,7 @@ namespace BibJuego.Clases
                 cJuego c_temp = baraja.ElementAt(indice);
                 destino.Add(c_temp);
                 baraja.RemoveAt(indice);
-                return "El jugador " + Nickname + " tiró la carta " + c_temp.Id_carta;
+                return "El jugador " + Nickname + " tiró la carta " + c_temp;
             }
             catch (Exception e)
             {
@@ -76,5 +80,10 @@ namespace BibJuego.Clases
             }
         }
         #endregion
+
+        public override string ToString()
+        {
+            return nickname + "\t\t| " + puntos;
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibJuego.Clases
 {
-    class Indicadora : cJuego
+    public class Indicadora : cJuego
     {
         #region Atributos
         private char color_o_numero;
@@ -32,5 +32,10 @@ namespace BibJuego.Clases
             }
         }
         #endregion
+
+        public override string ToString()
+        {
+            return "[" + color_o_numero + " ]";
+        }
     }
 }

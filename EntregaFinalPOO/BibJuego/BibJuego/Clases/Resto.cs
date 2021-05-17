@@ -7,7 +7,7 @@ using BibJuego.Interfaces;
 
 namespace BibJuego.Clases
 {
-    class Resto :IEntregarCarta
+    public class Resto :IEntregarCarta
     {
         #region Atributos 
         private List<cJuego> l_cartas_sobrantes;
@@ -31,13 +31,11 @@ namespace BibJuego.Clases
             {
                 if (l_cartas_sobrantes.Count != 0)
                 {
-                    string s = l_cartas_sobrantes.ElementAt(indice).Id_carta;
+                    cJuego s = l_cartas_sobrantes.ElementAt(indice);
                     destino.Add(L_cartas_sobrantes.ElementAt(indice));
                     L_cartas_sobrantes.RemoveAt(indice);
                     return "El resto entregó la carta " + s;
-                }
-                else if (destino.Count == 10)
-                    return "El jugador ya tiene 10 cartas, no puede recoger más";
+                }               
                 else
                     throw new Exception("EL resto se quedó sin cartas");
             }

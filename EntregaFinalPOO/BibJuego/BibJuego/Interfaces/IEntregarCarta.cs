@@ -7,7 +7,7 @@ using BibJuego.Clases;
 
 namespace BibJuego.Interfaces
 {
-    interface IEntregarCarta
+    public interface IEntregarCarta
     {
         string Entregar_carta(List<cJuego> destino, int indice);
     }

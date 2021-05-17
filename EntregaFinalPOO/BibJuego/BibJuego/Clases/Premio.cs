@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibJuego.Clases
 {
-    class Premio : Bonus
+    public class Premio : Bonus
     {
         #region Constructor
         public Premio(string id_carta, byte cant_cartas) : base(id_carta, cant_cartas)

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace BibJuego.Clases
 {
-    class Juego
+    public class Juego
     {
         #region Atributos
         private List<Jugador> l_jugadores;
@@ -219,28 +219,30 @@ namespace BibJuego.Clases
         #endregion
 
         #region Metodos para jugar el juego       
-        public List<string> Iniciar_juego()
+        public List<Ronda> Iniciar_juego()
         {
             try
             {
                 #region Inicio del juego
+                List<Ronda> l_rondas = new List<Ronda>();
+                Ronda ronda_temp;
+                Jugada jugada_temp;
+
                 bool jugador_gano = false;
-                List<string> jugadas = new List<string>();
                 l_cartas_jugadas.Add(resto.L_cartas_sobrantes.ElementAt(0));
                 resto.L_cartas_sobrantes.RemoveAt(0);
-                jugadas.Add("INICIO DEL JUEGO\n");
-                int rondas = 1;
+                ushort rondas = 1;
                 #endregion
+
                 do
                 {
-                    string s_jugada = "";
-                    jugadas.Add("\nRONDA " + rondas + "\n");
+                    ronda_temp = new Ronda(rondas);
+
                     #region Recorre la lista de jugadores
                     for (int i = 0; i < l_jugadores.Count; i++)
                     {
-                        s_jugada += "\n" + Mostrar_ultima_carta();
-                        s_jugada += "\n\nEs el turno de " + l_jugadores.ElementAt(i).Nickname;
-                        s_jugada += "\n" + Mostrar_baraja_jugador(i);
+                        jugada_temp = new Jugada(l_cartas_jugadas.Last(), l_jugadores.ElementAt(i));
+                        //jugada_temp.Movimiento += Mostrar_baraja_jugador(i) + "\n";
 
                         bool jugo_carta = false;
 
@@ -253,7 +255,7 @@ namespace BibJuego.Clases
                                 if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Color.Equals((l_cartas_jugadas.Last() as Estandar).Color) ||
                                     (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Numero.Equals((l_cartas_jugadas.Last() as Estandar).Numero))
                                 {
-                                    s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+                                    jugada_temp.Movimiento += l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
                                     jugo_carta = true;
                                     break;
                                 }
@@ -266,16 +268,16 @@ namespace BibJuego.Clases
                                 if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Color) ||
                                     (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Estandar).Numero))
                                 {
-                                    s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+                                    jugada_temp.Movimiento += l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
 
                                     Bonus b = Mirar_bonus();
                                     if (b is Premio)
                                     {
-                                        s_jugada += "\n" + (b as Premio).Tirar_cartas(l_jugadores.ElementAt(i), resto);
+                                        jugada_temp.Movimiento += Environment.NewLine + (b as Premio).Tirar_cartas(l_jugadores.ElementAt(i), resto);
                                     }
                                     else
                                     {
-                                        s_jugada += "\n" + (b as Castigo).Recoger_cartas(l_jugadores.ElementAt(i), resto);
+                                        jugada_temp.Movimiento += Environment.NewLine + (b as Castigo).Recoger_cartas(l_jugadores.ElementAt(i), resto);
                                     }
                                     jugo_carta = true;
                                     break;
@@ -289,7 +291,7 @@ namespace BibJuego.Clases
                                 if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Color.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero) ||
                                     (l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Estandar).Numero.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero))
                                 {
-                                    s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+                                    jugada_temp.Movimiento += l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
                                     jugo_carta = true;
                                     break;
                                 }
@@ -301,16 +303,16 @@ namespace BibJuego.Clases
                             {
                                 if ((l_jugadores.ElementAt(i).Baraja.ElementAt(j) as Indicadora).Color_o_numero.Equals((l_cartas_jugadas.Last() as Indicadora).Color_o_numero))
                                 {
-                                    s_jugada += "\n" + l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
+                                    jugada_temp.Movimiento += l_jugadores.ElementAt(i).Entregar_carta(l_cartas_jugadas, j);
 
                                     Bonus b = Mirar_bonus();
                                     if (b is Premio)
                                     {
-                                        s_jugada += "\n" + (b as Premio).Tirar_cartas(l_jugadores.ElementAt(i), resto);
+                                        jugada_temp.Movimiento += Environment.NewLine + (b as Premio).Tirar_cartas(l_jugadores.ElementAt(i), resto);
                                     }
                                     else
                                     {
-                                        s_jugada += "\n" + (b as Castigo).Recoger_cartas(l_jugadores.ElementAt(i), resto);
+                                        jugada_temp.Movimiento += Environment.NewLine + (b as Castigo).Recoger_cartas(l_jugadores.ElementAt(i), resto);
                                     }
                                     jugo_carta = true;
                                     break;
@@ -329,37 +331,47 @@ namespace BibJuego.Clases
                             }
                             else
                             {
-                                s_jugada += "\n" + resto.Entregar_carta(l_jugadores.ElementAt(i).Baraja, 0);
+                                jugada_temp.Movimiento += resto.Entregar_carta(l_jugadores.ElementAt(i).Baraja, 0);
                             }
                         }
                         #endregion
 
-                        s_jugada += "\n" + Mostrar_baraja_jugador(i);
+                        //jugada_temp.Movimiento += "\n" + Mostrar_baraja_jugador(i);
 
                         #region Si uno de los jugadores gana
                         if (l_jugadores.ElementAt(i).Baraja.Count == 0)
                         {
+                            jugada_temp.Movimiento += Environment.NewLine + "El jugador " + l_jugadores.ElementAt(i).Nickname + " ganó";
                             jugador_gano = true;
-                            s_jugada += "\nEl jugador " + l_jugadores.ElementAt(i).Nickname + " ganó";
+                            ronda_temp.L_jugadas.Add(jugada_temp);
+                            l_jugadores.ElementAt(i).Puntos += 100;
                             break;
                         }
                         #endregion  
+                        ronda_temp.L_jugadas.Add(jugada_temp);
+
+                        ronda_temp.Barajas.Add(Mostrar_baraja_jugador(0));
+                        ronda_temp.Barajas.Add(Mostrar_baraja_jugador(1));
+                        ronda_temp.Barajas.Add(Mostrar_baraja_jugador(2));
+                        ronda_temp.Barajas.Add(Mostrar_baraja_jugador(3));
                     }
                     #endregion
-                    s_jugada += "\n" + Mostrar_ultima_carta();
-                    jugadas.Add(s_jugada);
+                    
+
+                    l_rondas.Add(ronda_temp);
                     rondas++;
 
                 } while (jugador_gano == false);
 
-                return jugadas;
+                return l_rondas;
             }
             catch (Exception e)
             {
                 throw new Exception("\nHa ocurrido un error en el metodo Iniciar_juego de la clase Juego " + e);
             }
-        }
-        private string Mostrar_ultima_carta()
+        }           
+        
+        public string Mostrar_ultima_carta()
         {
             try
             {
@@ -384,7 +396,7 @@ namespace BibJuego.Clases
                 throw new Exception("Ocurrió un error en el metodo Mostrar_ultima_carta " + e);
             }
         }
-        private string Mostrar_baraja_jugador(int ind)
+        public string Mostrar_baraja_jugador(int ind)
         {
             try
             {
@@ -393,7 +405,7 @@ namespace BibJuego.Clases
                     string s_temp = "";
                     foreach (cJuego c in l_jugadores.ElementAt(ind).Baraja)
                     {
-                        s_temp += c.Id_carta + "  ";
+                        s_temp += c + "  ";
                     }
                     return s_temp;
                 }
@@ -431,8 +443,6 @@ namespace BibJuego.Clases
                 throw new Exception("Ocurrió un error en el metodo Rellenar_resto() " + e);
             }
         }
-
-        //Metodo que ocurre si alguien tira una carta indicadora
         private Bonus Mirar_bonus()
         {
             try
@@ -458,7 +468,6 @@ namespace BibJuego.Clases
                         return c_temp;
                     }
                 }
-
             }
             catch (Exception e)
             {

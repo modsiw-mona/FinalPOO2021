@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibJuego.Clases
 {
-    abstract class Carta
+    public abstract class Carta
     {
         #region Atributos
         protected string id_carta;

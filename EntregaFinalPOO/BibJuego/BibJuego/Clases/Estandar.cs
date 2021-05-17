@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibJuego.Clases
 {
-    class Estandar : cJuego
+    public class Estandar : cJuego
     {
         #region Atributos
         private char color;
@@ -45,5 +45,10 @@ namespace BibJuego.Clases
             }
         }
         #endregion
+
+        public override string ToString()
+        {
+            return "[" + color + numero + "]";
+        }
     }
 }

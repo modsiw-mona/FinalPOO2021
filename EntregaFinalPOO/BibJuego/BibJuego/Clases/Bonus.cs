@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibJuego.Clases
 {
-    abstract class Bonus : Carta
+    public abstract class Bonus : Carta
     {
         #region Atributos
         protected byte cant_cartas;
