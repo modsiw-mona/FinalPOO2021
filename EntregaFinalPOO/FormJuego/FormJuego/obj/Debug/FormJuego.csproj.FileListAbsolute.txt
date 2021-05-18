@@ -12,3 +12,17 @@ C:\Users\gabri\Documents\GitHub\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego
 C:\Users\gabri\Documents\GitHub\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\bin\Debug\BibJuego.pdb
 C:\Users\gabri\Documents\GitHub\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\obj\Debug\FormJuego.FormPartida.resources
 C:\Users\gabri\Documents\GitHub\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\obj\Debug\FormJuego.csproj.CopyComplete
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\bin\Debug\FormJuego.exe.config
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\bin\Debug\FormJuego.exe
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\bin\Debug\FormJuego.pdb
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\bin\Debug\BibJuego.dll
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\bin\Debug\BibJuego.pdb
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\obj\Debug\FormJuego.csprojAssemblyReference.cache
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\obj\Debug\FormJuego.Form1.resources
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\obj\Debug\FormJuego.FormPartida.resources
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\obj\Debug\FormJuego.Properties.Resources.resources
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\obj\Debug\FormJuego.csproj.GenerateResource.cache
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\obj\Debug\FormJuego.csproj.CoreCompileInputs.cache
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\obj\Debug\FormJuego.csproj.CopyComplete
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\obj\Debug\FormJuego.exe
+C:\Users\Sof\Desktop\POO\FinalPOO2021\EntregaFinalPOO\FormJuego\FormJuego\obj\Debug\FormJuego.pdb

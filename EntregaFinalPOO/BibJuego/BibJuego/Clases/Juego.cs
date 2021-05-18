@@ -44,13 +44,21 @@ namespace BibJuego.Clases
             get => l_jugadores;
             set
             {
-                if (value.Count < 2)
+                if (value.Count < 4)
                     throw new Exception("La lista de jugadores no puede ser menor a dos");
                 else
                     l_jugadores = value;
             }
         }
-        public List<Carta> L_cartas { get => l_cartas; set => l_cartas = value; }
+        public List<Carta> L_cartas { get => l_cartas;
+            set
+            {
+                if (value.Count < 0)
+                    throw new Exception("La lista de cartas no puede ser menor a cero");
+                else
+                    l_cartas = value;
+            }
+        }
         public Resto Resto { get => resto; }
         public List<cJuego> L_cjuego { get => l_cjuego; /*set => l_cjuego = value; */}
         public List<Bonus> L_bonus { get => l_bonus; /*set => l_bonus = value;*/ }

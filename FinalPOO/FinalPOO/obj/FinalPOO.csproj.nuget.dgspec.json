@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gabri\\Documents\\GitHub\\FinalPOO2021\\FinalPOO\\FinalPOO\\FinalPOO.csproj": {}
+    "C:\\Users\\Sof\\Desktop\\POO\\FinalPOO2021\\FinalPOO\\FinalPOO\\FinalPOO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gabri\\Documents\\GitHub\\FinalPOO2021\\FinalPOO\\FinalPOO\\FinalPOO.csproj": {
+    "C:\\Users\\Sof\\Desktop\\POO\\FinalPOO2021\\FinalPOO\\FinalPOO\\FinalPOO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabri\\Documents\\GitHub\\FinalPOO2021\\FinalPOO\\FinalPOO\\FinalPOO.csproj",
+        "projectUniqueName": "C:\\Users\\Sof\\Desktop\\POO\\FinalPOO2021\\FinalPOO\\FinalPOO\\FinalPOO.csproj",
         "projectName": "FinalPOO",
-        "projectPath": "C:\\Users\\gabri\\Documents\\GitHub\\FinalPOO2021\\FinalPOO\\FinalPOO\\FinalPOO.csproj",
-        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabri\\Documents\\GitHub\\FinalPOO2021\\FinalPOO\\FinalPOO\\obj\\",
+        "projectPath": "C:\\Users\\Sof\\Desktop\\POO\\FinalPOO2021\\FinalPOO\\FinalPOO\\FinalPOO.csproj",
+        "packagesPath": "C:\\Users\\Sof\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sof\\Desktop\\POO\\FinalPOO2021\\FinalPOO\\FinalPOO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sof\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

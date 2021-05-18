@@ -47,7 +47,18 @@ namespace BibJuego.Clases
             }
         }
 
-        public List<string> Barajas { get => barajas; set => barajas = value; }
+        public List<string> Barajas
+        {
+            get => barajas;
+            set
+            {
+                if (value.Count <= 0)
+                    throw new Exception("El número de ronda no puede ser menor o igual a 0");
+                else
+                    barajas = value;
+            }
+        }
+            
 
 
         #endregion
